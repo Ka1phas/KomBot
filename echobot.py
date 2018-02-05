@@ -1,7 +1,8 @@
 import json
 import requests
+import config as cfg
 
-TOKEN = ""
+TOKEN = cfg.api["key"]
 URL = "https://api.telegram.org/bot{}/".format(TOKEN)
 
 def get_url(url):
