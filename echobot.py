@@ -1,7 +1,7 @@
 import json
 import requests
 
-TOKEN = "529049018:AAGS6MriBtb18w-WXCpqCLTbsCnLiC2jSiA"
+TOKEN = ""
 URL = "https://api.telegram.org/bot{}/".format(TOKEN)
 
 def get_url(url):
