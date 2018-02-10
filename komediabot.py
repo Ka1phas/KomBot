@@ -11,7 +11,6 @@ def get_url(url):
     content = response.content.decode("utf8")
     return content
 
-
 def get_json_from_url(url):
     content = get_url(url)
     js = json.loads(content)
@@ -39,15 +38,42 @@ def get_last_chat_id_and_text(updates):
     chat = updates["result"][last_update]["message"]["chat"]["id"]
     return (text, chat)
 
-def echo_all(updates):
+def answer_all(updates):
     for update in updates["result"]:
         try:
-            text = update["message"]["text"]
-            chat_id = update["message"]["chat"]["id"]
-            send_message(text, chat_id)
+            if "text" in update["message"]:
+                answer_text(update)
+            elif "photo" in update["message"]:
+                answer_photo(update)
+            elif "location" in update["message"]:
+                answer_location(update)
         except Exception as e:
-            print(e)
+            print("Exception: " + str(e))
 
+def answer_text(msg):
+    print("TEXT")
+    try:
+        text = msg["message"]["text"]
+        chat_id = msg["message"]["chat"]["id"]
+        send_message("Eine Nachricht: " + text , chat_id)
+    except Exception as e:
+        print(e)
+
+def answer_photo(msg):
+    print("FOTO")
+    try:
+        chat_id = msg["message"]["chat"]["id"]
+        send_message("Ein Foto", chat_id)
+    except Exception as e:
+        print(e)
+
+def answer_location(msg):
+    print("LOCATION")
+    try:
+        chat_id = msg["message"]["chat"]["id"]
+        send_message("Ein Standort", chat_id)
+    except Exception as e:
+        print(e)
 
 def send_message(text, chat_id):
     url = URL + "sendMessage?text={}&chat_id={}".format(text, chat_id)
@@ -59,7 +85,7 @@ def main():
         updates = get_updates(last_update_id)
         if len(updates["result"]) > 0:
             last_update_id = get_last_update_id(updates) + 1
-            echo_all(updates)
+            answer_all(updates)
         time.sleep(0.5)
         
 if __name__ == '__main__':
