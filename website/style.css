@@ -1,3 +1,17 @@
+/* Animations */
+@keyframes splash-title {
+    0% {
+        transform: scale(3,0);
+    }
+    25% {
+        transform: scale(3,0);
+    }
+    100% {
+        transform: scale(1,1);
+    }
+}
+/* == */
+
 * {
     margin: 0;
     padding: 0;
@@ -10,6 +24,7 @@ body {
     color: #0f0f0f;
     position: relative;
     height: 100%;
+    font-family: 'Varela Round', sans-serif;
 }
 section {
     display: block;
@@ -31,18 +46,7 @@ section .parallax-box {
 section .content {
     position: absolute;
     top: 0;
-    left: 0;
-}
-section .content.center {
-    left: 50%;
-    right: 50%;
-    padding-left: -25%;
-}
-section:nth-child(odd) {
-    background: #d0d0d0;
-}
-section h1 {
-    position: relative;
+    width: 100%;
 }
 .spacer {
     height: 150px;
@@ -60,18 +64,6 @@ section h1 {
 .bg03 {
     background-image: url('img/memphis-colorful.png');
 }
-
-@keyframes splash-title {
-    0% {
-        transform: scale(3,0);
-    }
-    25% {
-        transform: scale(3,0);
-    }
-    100% {
-        transform: scale(1,1);
-    }
-}
 #splash-title {
     display: block;
     position: relative;
@@ -79,4 +71,31 @@ section h1 {
     font-family: 'Varela Round', sans-serif;
     animation-name: splash-title;
     animation-duration: 0.5s;
+}
+
+/* Sections */
+#section02 {
+    height: 3000px;
+}
+
+#tut-phone {
+    position: absolute;
+    width: 359px;
+    height: 737px;
+    background-image: url('img/phone.png');
+    background-repeat: no-repeat;
+    top: 50px;
+    left: 50%;
+    margin-left: -180px;
+}
+#tut-step {
+    position: absolute;
+    left: 17px;
+    top: 102px;
+    width: 323px;
+    height: 509px;
+    overflow: hidden;
+    background-image: url('img/tutorial/step_all.png');
+    background-repeat: no-repeat;
+    background-position: top left;
 }
