@@ -75,7 +75,7 @@ section .content {
 
 /* Sections */
 #section02 {
-    height: 3000px;
+    height: 3560px;
 }
 
 #tut-phone {
@@ -98,4 +98,36 @@ section .content {
     background-image: url('img/tutorial/step_all.png');
     background-repeat: no-repeat;
     background-position: top left;
+}
+#tut-phone svg {
+    position: relative;
+    z-index: 1;
+}
+.tut-info-box {
+    position: absolute;
+    border: 5px solid #ff0000;
+    border-radius: 5px;
+    background-color: #ffeeee;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0 10px;
+    left: 438px;
+    width: 250px;
+    height: 0;
+    overflow: hidden;
+    display: none;
+    box-sizing: border-box;
+}
+.tut-info-box.green {
+    border-color: #00ff00;
+    background-color: #eeffee;
+}
+#step01_info_box, #step02_info_box {
+    top: 110px;
+}
+#step03_info_box {
+    top: 196px;
+}
+#step04_info_box, #step05_info_box {
+    top: 515px;
 }

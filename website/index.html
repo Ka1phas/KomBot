@@ -4,6 +4,8 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="style.css" />
+        <script type="text/javascript" src="js/functions.js"></script>
+        <script type="text/javascript" src="js/gsap/TimelineMax.min.js"></script>
         <script type="text/javascript" src="js/gsap/TweenMax.min.js"></script>
         <script type="text/javascript" src="js/scrollmagic/ScrollMagic.min.js"></script>
         <script type="text/javascript" src="js/scrollmagic/animation.gsap.min.js"></script>
@@ -27,6 +29,85 @@
             <div class="content">
                 <div id="tut-phone">
                     <div id="tut-step"></div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="737" width="718">
+                            <circle
+                                class="tut-step-01"
+                                style="stroke-width:5;fill:none;stroke:#ff0000;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:138px;stroke-dashoffset:138px;stroke-linecap:none;stroke-linejoin:round"
+                                r="22px"
+                                cy="126px"
+                                cx="318px"
+                                id="step01_highlight" />
+                            <line
+                                class="tut-step-01"
+                                style="stroke-width:5;stroke:#ff0000;stroke-dasharray:100px;stroke-dashoffset:100px"
+                                x1="340px"
+                                y1="126px"
+                                x2="440px"
+                                y2="126px" 
+                                id="step01_line" />
+
+                            <rect
+                                style="stroke-width:5;fill:none;stroke:#ff0000;stroke-miterlimit:4;stroke-dasharray:512px;stroke-dashoffset:512px"
+                                x="70px"
+                                y="108px"
+                                width="220px"
+                                height="36px"
+                                id="step02_highlight" />
+                            <line
+                                style="stroke-width:5;stroke:#ff0000;stroke-dasharray:150px;stroke-dashoffset:150px"
+                                x1="290px"
+                                y1="126px"
+                                x2="440px"
+                                y2="126px" 
+                                id="step02_line" />
+
+                            <rect
+                                style="stroke-width:5;fill:none;stroke:#ff0000;stroke-miterlimit:4;stroke-dasharray:758px;stroke-dashoffset:758px"
+                                x="19px"
+                                y="181px"
+                                width="318px"
+                                height="61px"
+                                id="step03_highlight" />
+                            <line
+                                style="stroke-width:5;stroke:#ff0000;stroke-dasharray:103px;stroke-dashoffset:103px"
+                                x1="337px"
+                                y1="215px"
+                                x2="440px"
+                                y2="215px" 
+                                id="step03_line" />
+
+                            <rect
+                                style="stroke-width:5;fill:none;stroke:#ff0000;stroke-miterlimit:4;stroke-dasharray:734px;stroke-dashoffset:734px"
+                                x="19px"
+                                y="564px"
+                                width="318px"
+                                height="49px"
+                                id="step04_highlight" />
+                            <line
+                                style="stroke-width:5;stroke:#ff0000;stroke-dasharray:103px;stroke-dashoffset:103px"
+                                x1="337px"
+                                y1="583px"
+                                x2="440px"
+                                y2="583px" 
+                                id="step04_line" />
+                        </svg>
+                        <div class="tut-info-box tut-step-01" id="step01_info_box">
+                            Starte eine Suche nach unserem Bot
+                        </div>
+                        <div class="tut-info-box" id="step02_info_box">
+                            Schreibe in das Suchfeld den Namen von unserem Bot: <span style="font-family:monospace">@komedia_bot</span>
+                        </div>
+                        <div class="tut-info-box" id="step03_info_box">
+                            In der Liste der gefundenden Bots sollte nun unser aufgelistet sein. Klicke auf den Namen um mit dem Bot zu kommunizieren
+                        </div>
+                        <div class="tut-info-box" id="step04_info_box">
+                            Durch klicken auf <span style="font-family:monospace">Neu Starten</span> beginnst du mit dem Bot zu chatten
+                        </div>
+                        <div class="tut-info-box green" id="step05_info_box">
+                            Viel Spaß!
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
