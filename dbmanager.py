@@ -17,7 +17,7 @@ class DBManager:
         self.connection.commit()
         
     def delete_lecture(self, lecture_id, owner):
-        stmt = "DELETE FROM studenlectures WHERE lecture = (?) AND owner = (?)"
+        stmt = "DELETE FROM studentlectures WHERE lecture = (?) AND owner = (?)"
         args = (lecture_id, owner)
         self.connection.execute(stmt, args)
         self.connection.commit()
