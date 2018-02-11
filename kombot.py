@@ -2,7 +2,9 @@ import time
 import json
 import requests
 import config as cfg
+import textmessagehandler
 from dbmanager import DBManager
+
 
 db = DBManager()
 
@@ -31,20 +33,15 @@ def get_updates(offset=None):
 def handle_updates(updates):
     for update in updates["result"]:
         try:
-            text = update["message"]["text"]
-            chat = update["message"]["chat"]["id"]
-            lectures = db.get_studentlectures(chat)
-            if text in lectures:
-                db.delete_lecture(1, chat)
-                lectures = db.get_studentlectures(chat)
-            else:
-                db.add_lecture(1, chat)
-                lectures = db.get_studentlectures(chat)
-            message = "\n".join(lectures)
-            send_message(message, chat)
+            if "text" in update["message"]:
+                textmessagehandler.handle_msg(update)
+           # elif "photo" in update["message"]:
+                # Do something
+           # elif "location" in update["message"]:
+          #      # Do something
         except KeyError:
             pass
-        
+
 def get_last_update_id(updates):
     update_ids = []
     for update in updates["result"]:
