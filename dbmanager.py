@@ -51,3 +51,7 @@ class DBManager:
                 " WHERE studentlectures.owner = (?)")
         args = (owner, )
         return [x[0] for x in self.connection.execute(stmt, args)]
+
+    def get_lectures(self):
+        stmt = "SELECT title FROM lecture"
+        return [x[0] for x in self.connection.execute(stmt)]

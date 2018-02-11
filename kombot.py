@@ -65,11 +65,6 @@ def handle_updates(updates):
             elif text in lectures:
                 db.delete_lecture(1, chat)
                 lectures = db.get_studentlectures(chat)
-            else:
-                db.add_lecture(1, chat)
-                lectures = db.get_studentlectures(chat)
-                message = "\n".join(lectures)
-                send_message(message, chat)
         except KeyError:
             pass
 
@@ -126,6 +121,20 @@ def check_for_command(cmd, chat, args=None):
                 lectures = db.get_studentlectures(chat)
                 message = "\n".join(lectures)
                 send_message(message, chat)
+    elif cmd == "getlectures":
+        lectures = db.get_studentlectures(chat)
+        message = ("Diese Vorlesungen hast du "
+                   "in deinem Stundenplan:\n")
+        for lecture in lectures:
+            message += '\n' + lecture
+        send_message(message, chat)
+    elif cmd == "showlectures":
+        lectures = db.get_lectures()
+        message = ("Diese Vorlesungen hast du "
+                   "in deinem Stundenplan:\n")
+        for lecture in lectures:
+            message += '\n' + lecture
+        send_message(message, chat)
     else:
         print("[BOT]:: Command not found : " + cmd)
 
