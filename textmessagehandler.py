@@ -5,6 +5,8 @@ import os
 __location__ = os.path.realpath(
     os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
+_wants_to_remove = []
+
 def handle_msg(msg):
     try:
         text = msg["message"]["text"]
@@ -19,6 +21,13 @@ def handle_msg(msg):
 
 
 def get_pattern_match(text, chat):
+    if(chat in _wants_to_remove):
+        lectures = db.get_studentlectures(chat)
+        if(text in lectures):
+            db.delete_lecture_by_title(text, chat)
+            message = "Ich habe die Vorlesung {} aus deinem Studenplan gelöscht.".format(text)
+            send_message(message, chat)
+            return
     with open(os.path.join(__location__, 'patterns.dat')) as file:
         for line in file:
             skill_name =  line.split(' ', 1)[0]
@@ -65,6 +74,7 @@ def check_for_command(cmd, chat, args=None):
     print("[BOT]:: Checking for command : " + cmd
           + " with arguments : " + sargs)
     if cmd == "removelecture":
+        _wants_to_remove.append(chat)
         lectures = db.get_studentlectures(chat)
         keyboard = build_keyboard(lectures)
         send_message("Wähle eine Vorlesung aus, die gelöscht werden soll",
@@ -84,7 +94,7 @@ def check_for_command(cmd, chat, args=None):
             print("[BOT]:: Command detected : ADD LECTURE with ID =  "
                   + str(lectureid))
             if lectureid >= 0:
-                db.add_lecture(1, chat)
+                db.add_lecture(lectureid, chat)
                 lectures = db.get_studentlectures(chat)
                 message = "\n".join(lectures)
                 send_message(message, chat)

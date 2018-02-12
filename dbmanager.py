@@ -32,6 +32,19 @@ class DBManager:
         args = (lecture_id, owner)
         self.connection.execute(stmt, args)
         self.connection.commit()
+        
+    def delete_lecture_by_title(self, lecture_title, owner):
+        stmt = ("DELETE FROM studentlectures"
+                " WHERE lecture IN ("
+                " SELECT lecture FROM studentlectures"
+                " INNER JOIN lecture"
+                " ON lecture.lectureid = studentlectures.lecture"
+                " WHERE title = (?)"
+                " AND owner = (?)"
+                ")")
+        args = (lecture_title, owner)
+        self.connection.execute(stmt, args)
+        self.connection.commit()
 
     def get_lecture_id(self, lecture_title):
         stmt = ("SELECT lectureid FROM lecture"
