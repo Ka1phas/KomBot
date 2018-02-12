@@ -1,4 +1,5 @@
 from kombot import send_message, send_location, db
+from patternmatching import get_skill_match
 import json
 import os
 
@@ -43,15 +44,12 @@ def get_pattern_match(text, chat):
     removeChars = "_?!.-"
     for char in removeChars:
         cleaned_text = cleaned_text.replace(char, "")
-
-
-    print(cleaned_text)
+    gave_answer = False
     with open(os.path.join(__location__, 'patterns.dat')) as file:
         for line in file:
             if len(line) <= 1:
                 continue
-            print(line)
-            skill_name =  line.split(' ', 1)[0]
+            skill_name = line.split(' ', 1)[0]
             skill_text = line.split(' ', 1)[1]
 
             skill_text = skill_text.strip()
@@ -75,12 +73,17 @@ def get_pattern_match(text, chat):
                 else:
 
                     if skill_patterns[x] not in cleaned_text:
-                        print(skill_patterns[x] +  "not in " + cleaned_text)
+                        print(skill_patterns[x] + "not in " + cleaned_text)
                         pattern_match = False
                         break
 
             if pattern_match:
-                send_message(skill_name, chat)
+                if get_skill_match(skill_name, skill_text, cleaned_text, chat):
+                    gave_answer = True
+                    break
+
+    if not gave_answer:
+        send_message("Das habe ich leider nicht verstanden.", chat)
 
 
 def handle_command(text, chat):
