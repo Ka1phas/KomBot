@@ -45,6 +45,7 @@ def get_pattern_match(text, chat):
         cleaned_text = cleaned_text.replace(char, "")
 
 
+    print(cleaned_text)
     with open(os.path.join(__location__, 'patterns.dat')) as file:
         for line in file:
             if len(line) <= 1:
@@ -61,6 +62,8 @@ def get_pattern_match(text, chat):
             for x in range(0, len(skill_patterns)):
                 if len(skill_patterns[x]) == 0:
                     continue
+                skill_patterns[x] = skill_patterns[x].strip()
+
                 if x == 0:
                     if not cleaned_text.startswith(skill_patterns[x]):
                         pattern_match = False
@@ -70,7 +73,9 @@ def get_pattern_match(text, chat):
                         pattern_match = False
                         break
                 else:
+
                     if skill_patterns[x] not in cleaned_text:
+                        print(skill_patterns[x] +  "not in " + cleaned_text)
                         pattern_match = False
                         break
 
