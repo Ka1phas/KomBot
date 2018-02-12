@@ -1,4 +1,4 @@
-from kombot import send_message, db
+from kombot import send_message, send_location, db
 import json
 import os
 
@@ -161,7 +161,7 @@ def check_for_command(cmd, chat, args=None):
                 lecture_id = int(args[0])
             except ValueError as err:
                 return
-            lecture_infos = db.get_lecture_infos(lecture_id);
+            lecture_infos = db.get_lecture_infos(lecture_id)
             print("[BOT]:: Command detected : GET LECTURE INFOS = " + lecture_infos["title"] + " on " + lecture_infos["weekday"] + " from " + lecture_infos["start"] + " to " + lecture_infos["end"] + " in room " + lecture_infos["room_name"])
             message = "Die Vorlesung {} findet am {} von {} Uhr bis {} Uhr in Raum {} statt.".format(lecture_infos["title"],
                                                                                             _german_weekdays[lecture_infos["weekday"]],
@@ -169,6 +169,13 @@ def check_for_command(cmd, chat, args=None):
                                                                                             lecture_infos["end"],
                                                                                             lecture_infos["room_name"])
             send_message(message, chat)
+    elif cmd == "getroominfos":
+        if args:
+            room_infos = db.get_room_infos(args[0])
+            print("[BOT]:: Command detected : GET ROOM INFOS = " + room_infos["name"] + " on floor " + str(room_infos["floor"]) + " at longitude " + room_infos["longitude"] + " and latitude " + room_infos["latitude"])
+            message = "Der Raum, den du suchst befindet sich hier im {} Stock:".format(str(room_infos["floor"]))
+            send_message(message, chat)
+            send_location(chat, room_infos["longitude"], room_infos["latitude"])
     else:
         print("[BOT]:: Command not found : " + cmd)
 

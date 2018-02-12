@@ -61,6 +61,11 @@ def send_message(text, chat_id, reply_markup=None):
     print("[BOT]:: Sending new response to telegram bot api: " + url)
     get_url(url)
 
+def send_location(chat_id, longitude, latitude):
+    url = URL + "sendlocation?chat_id={}&longitude={}&latitude={}".format(chat_id, longitude, latitude)
+    print("[BOT]:: Sending new location to telegram bot api: " + url)
+    get_url(url)
+
 
 def main():
     db.setup_timetable()
