@@ -38,17 +38,59 @@ def get_pattern_match(text, chat):
             message = "Ich habe die Vorlesung {} aus deinem Studenplan gelöscht.".format(text)
             send_message(message, chat)
             return
+
+    cleaned_text = text.strip()
+    removeChars = "_?!.-"
+    for char in removeChars:
+        cleaned_text = cleaned_text.replace(char, "")
+
+
     with open(os.path.join(__location__, 'patterns.dat')) as file:
         for line in file:
             skill_name =  line.split(' ', 1)[0]
             skill_text = line.split(' ', 1)[1]
-            skill_patterns = skill_text.split("...")
-            print(skill_patterns[0])
-            print(text)
-            if text.startswith(skill_patterns[0]):
+            skill_text = skill_text.strip()
+            skill_patterns = skill_text.split("_")
+
+            pattern_match = True
+
+            print(skill_text)
+            ###### Try to match patterns with input#####
+            for x in range(0, len(skill_patterns)):
+                print(x)
+                if len(skill_patterns[x]) == 0:
+                    continue
+                if x == 0:
+                    if not cleaned_text.startswith(skill_patterns[x]):
+                        pattern_match = False
+                        print("nomatch1")
+                        break
+                    print("match1")
+                elif x == len(skill_patterns) - 1:
+                    if not cleaned_text.endswith(skill_patterns[x]):
+                        pattern_match = False
+                        print("nomatch2")
+                        print(cleaned_text)
+                        print(skill_patterns[x])
+
+                        for char in cleaned_text:
+                            print(str(ord(char)))
+
+                        print("######")
+                        for char in skill_patterns[x]:
+                            print(str(ord(char)))
+                        print("######")
+                        break
+                    print("match2")
+                else:
+                    if cleaned_text not in skill_patterns[x]:
+                        pattern_match = False
+                        print("nomatch3")
+                        break
+                    print("match3")
+
+            if pattern_match:
                 send_message(skill_name, chat)
-                break
-            print(line)
 
 
 def handle_command(text, chat):

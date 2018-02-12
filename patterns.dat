@@ -1,6 +1,15 @@
-GetLectureTime Wann findet ... statt
-GetLectureTime Um wieviel Uhr findet ... statt
-GetLectureTime Um welche Uhrzeit findet ... statt
-GetLectureTime Wann ist die Veranstaltung ...
-GetLectureTime Um wieviel Uhr ist die Veranstaltung ...
-GetLectureTime Um welche Uhrzeit ist die Veranstaltung ...
+GetLectureTime Wann findet _ statt
+GetLectureTime Um wieviel Uhr findet _ statt
+GetLectureTime Um welche Uhrzeit findet _ statt
+GetLectureTime Wann ist die Veranstaltung _
+GetLectureTime Um wieviel Uhr ist die Veranstaltung _
+GetLectureTime Um welche Uhrzeit ist die Veranstaltung _
+GetFreeSoftware Welche Programme gibt es kostenlos _
+GetFreeSoftware Welche Software gibt es kostenlos _
+
+GetHowToUse Wie verwende ich _
+GetHowToUse Wie benutze ich _
+GetHowToUse Wie funktioniert der _
+GetHowToUse Wie funktioniert das _
+
+GetSemesterFee _ Semesterbeitrag _
