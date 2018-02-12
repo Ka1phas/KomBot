@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <script type="text/javascript" src="js/functions.js"></script>
+        <script type="text/javascript" src="js/gsap/TimelineMax.min.js"></script>
+        <script type="text/javascript" src="js/gsap/TweenMax.min.js"></script>
+        <script type="text/javascript" src="js/scrollmagic/ScrollMagic.min.js"></script>
+        <script type="text/javascript" src="js/scrollmagic/animation.gsap.min.js"></script>
+        <script type="text/javascript" src="js/scrollmagic/debug.addIndicators.min.js"></script>
+        <script type="text/javascript" src="js/typed/typed.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Raleway|PT+Sans|Raleway|Reenie+Beanie" rel="stylesheet"> 
+        <title>KomBot</title>
+    </head>
+    <body>
+        <section id="section01">
+            <div class="parallax-box bg01">
+                <div class="top">
+                    <h1 id="splash-title">
+                        <img src="img/logo.png" />
+                        KomBot
+                    </h1>
+                    <div id="questions-cycle"></div>
+                    <div class="info-box">
+                        Du hast viele Fragen aber weißt nicht an wen du dich wenden sollst und die Webseite der Universität ist zu verwirrend?<br>
+                        Dann ist <em>KomBot</em> die Lösung!
+                    </div>
+                </div>
+            </div>
+            <div class="bottom">
+                <div id="start-more-info">
+                    Scroll runter um mehr über <em>KomBot</em> zu erfahren
+                </div>
+            </div>
+            <div id="section01-overlay" class="section-overlay"></div>
+        </section>
+        <div class="spacer">
+            <h1>Was bietet der Bot?</h1>
+        </div>
+        <section id="section-features">
+            <div class="parallax-box bg03"></div>
+            <div id="feature-content-wrap" class="content">
+                <div id="feature-content" class="content-inner">
+                    <!-- Rauminfo -->
+                    <div class="feature" id="feature-location">
+                        <h2>Gebäude- und Raumfindung</h2>
+                        <div id="feature-location-map" class="feature-left-side">
+                            <img src="img/map.jpg" />
+                            <div class="feature-location-marker" id="feature-location-marker01"></div>
+                            <div class="feature-location-marker" id="feature-location-marker02"></div>
+                        </div>
+                        <div class="feature-right-side">
+                            <p><em>KomBot</em> hat sämtliche Informationen über Gebäude und Räume und kann jederzeit nach diesen Informationen befragt werden.</p>
+                            <div class="spacer-small"></div>
+                            <h3 id="feature-room-search-title01">Suche nach einem spezifischen Raum</h3>
+                            <span class="quote" id="feature-location-search01">"Wo ist der Raum LE 105"</span>
+                            <div class="spacer-small"></div>
+                            <h3 id="feature-room-search-title02">Suche nach dem Raum einer Vorlesung</h3>
+                            <span class="quote" id="feature-location-search02">"Wo ist die Vorlesung InfoN?"</span>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <!-- Vorlesungs Info -->
+                    <div class="feature" id="feature-lecture" style="left:100%;">
+                        <h2>Vorlesungsinformationen</h2>
+                        <div class="feature-left-side">
+                            <div id="feature-lecture-infon" class="feature-lecture-info">
+                                <div id="feature-lecture-overlay01" class="feature-lecture-overlay"></div>
+                                <div class="feature-lecture-title">Informatik N<span>Informatische Grundlagen neuer Medien und Kommunikationstechniken</span></div>
+                                <div class="feature-lecture-info-content">
+                                    <table>
+                                        <tr>
+                                            <th>Tag</th>
+                                            <th>Zeit</th>
+                                            <th>Rhythmus</th>
+                                            <th>Raum</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Mo.</td>
+                                            <td>11:00 bis 12:00</td>
+                                            <td>wöch.</td>
+                                            <td>LB - LB 104</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Di.</td>
+                                            <td>16:00 bis 18:00</td>
+                                            <td>wöch.</td>
+                                            <td>LB - LB 104</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div id="feature-lecture-psycho" class="feature-lecture-info">
+                                <div id="feature-lecture-overlay02" class="feature-lecture-overlay"></div>
+                                <div class="feature-lecture-title">Grundlagen der Sozialpsychologie</div>
+                                <div class="feature-lecture-info-content">
+                                    <table>
+                                        <tr>
+                                            <th>Tag</th>
+                                            <th>Zeit</th>
+                                            <th>Rhythmus</th>
+                                            <th>Raum</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Mi.</td>
+                                            <td>14:00 bis 16:00</td>
+                                            <td>wöch.</td>
+                                            <td>LB - LB 104</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feature-right-side">
+                            <p>Sämtliche Vorlesungen mit Raumbezeichnungen und Zeiten sind abrufbar.</p>
+                            <div class="spacer-small"></div>
+                            <h3 id="feature-lecture-title01">Frage nach dem Start einer Vorlesung</h3>
+                            <span class="quote" id="feature-lecture-search01">"Wann findet InfoN statt?"</span>
+                            <span class="response" id="feature-lecture-response01">Die Vorlesung Informatik N findet von 11:00 Uhr bis 12:00 Uhr am Montag und von 16:00 Uhr bis 18:00 Uhr am Dienstag statt.</span>
+                            <div class="spacer-small"></div>
+                            <h3 id="feature-lecture-title02">Frage nach dem Ort einer Vorlesung</h3>
+                            <span class="quote" id="feature-lecture-search02">"Wo findet Sozialpsychologie statt?"</span>
+                            <span class="response" id="feature-lecture-response02">Die Vorlesung Grundlagen der Sozialpsychologie findet in LB 104 statt.</span>
+                        </div>
+                    </div>
+                    <!-- FAQ -->
+                    <div class="feature" id="feature-faq" style="right:100%">
+                        <h2>Häufig gestellte Fragen</h2>
+                        <p><em>KomBot</em> besitzt ebenfalls eine Wissensdatenbank für häufig gestellte sonstige Fragen rund ums Studium, insbesondere des Studiumeinstiegs.</p><br>
+                        <div class="feature-left-side">
+                            <h3 class="feature-faq-left-title">Fragen zum Komedia Studium</h3>
+                            <span class="quote feature-faq-left01">"Welche Kurse soll ich besuchen?"</span>
+                            <span class="response feature-faq-left-response01">Grundsätzlich solltest du dich an den Regelstudienplan halten, welchen du hier finden kannst: &lt;LINK&gt;.<br>Natürlich musst du dich nicht daran halten, beziehungsweise kannst es nicht mehr. Dann...</span>
+                            <span class="quote feature-faq-left02">"Was sind Versuchspersonstunden?"</span>
+                            <span class="response feature-faq-left-response02">Als Komedia Student/in hast du die große Ehre an Studien teilzunehmen die dich überhaupt nicht interessieren und eigentlich nur deine wertvolle Zeit in Anspruch nehmen. Aber die Studienleiter haben bestimmt ebenfalls Zeit für deine langweilige Studie in Anspruch genommen.</span>
+                        </div>
+                        <div class="feature-right-side">
+                            <h3 class="feature-faq-right-title">Allgemeine Fragen zum Studium</h3>
+                            <span class="quote feature-faq-right01">"Wie kann ich mich zu Prüfungen anmelden?"</span>
+                            <span class="response feature-faq-right-response01">Auf der Webseite https://campus.uni-due.de findest du einen Reiter namens "Meine Funktionen", dort klickst du auf Prüfungsanmeldungen...</span>
+                            <span class="quote feature-faq-right02">"Gibt es Lerngruppen zu InfoN?"</span>
+                            <span class="response feature-faq-right-response02">Leider weiß ich das nicht, aber hier findest zu nützliche Webseiten &amp; Tools die von Studenten zum organiseren von Lerngruppen genutzt werden...</span>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="spacer">
+            <h1>Wie kann ich den Bot nutzen?</h1>
+        </div>
+        <section id="section-tutorial">
+            <div class="parallax-box bg02"></div>
+            <div class="content">
+                <div id="tut-phone">
+                    <div id="tut-step"></div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="737" width="718">
+                            <circle
+                                class="tut-step-01"
+                                style="stroke-width:5;fill:none;stroke:#ff0000;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:138px;stroke-dashoffset:138px;stroke-linecap:none;stroke-linejoin:round"
+                                r="22px"
+                                cy="126px"
+                                cx="318px"
+                                id="step01_highlight" />
+                            <line
+                                class="tut-step-01"
+                                style="stroke-width:5;stroke:#ff0000;stroke-dasharray:100px;stroke-dashoffset:100px"
+                                x1="340px"
+                                y1="126px"
+                                x2="440px"
+                                y2="126px" 
+                                id="step01_line" />
+
+                            <rect
+                                style="stroke-width:5;fill:none;stroke:#ff0000;stroke-miterlimit:4;stroke-dasharray:512px;stroke-dashoffset:512px"
+                                x="70px"
+                                y="108px"
+                                width="220px"
+                                height="36px"
+                                id="step02_highlight" />
+                            <line
+                                style="stroke-width:5;stroke:#ff0000;stroke-dasharray:150px;stroke-dashoffset:150px"
+                                x1="290px"
+                                y1="126px"
+                                x2="440px"
+                                y2="126px" 
+                                id="step02_line" />
+
+                            <rect
+                                style="stroke-width:5;fill:none;stroke:#ff0000;stroke-miterlimit:4;stroke-dasharray:758px;stroke-dashoffset:758px"
+                                x="19px"
+                                y="181px"
+                                width="318px"
+                                height="61px"
+                                id="step03_highlight" />
+                            <line
+                                style="stroke-width:5;stroke:#ff0000;stroke-dasharray:103px;stroke-dashoffset:103px"
+                                x1="337px"
+                                y1="215px"
+                                x2="440px"
+                                y2="215px" 
+                                id="step03_line" />
+
+                            <rect
+                                style="stroke-width:5;fill:none;stroke:#ff0000;stroke-miterlimit:4;stroke-dasharray:734px;stroke-dashoffset:734px"
+                                x="19px"
+                                y="564px"
+                                width="318px"
+                                height="49px"
+                                id="step04_highlight" />
+                            <line
+                                style="stroke-width:5;stroke:#ff0000;stroke-dasharray:103px;stroke-dashoffset:103px"
+                                x1="337px"
+                                y1="583px"
+                                x2="440px"
+                                y2="583px" 
+                                id="step04_line" />
+                        </svg>
+                        <div class="tut-info-box tut-step-01" id="step01_info_box">
+                            Starte eine Suche nach unserem Bot
+                        </div>
+                        <div class="tut-info-box" id="step02_info_box">
+                            Schreibe in das Suchfeld den Namen von unserem Bot: <span style="font-family:monospace">@komedia_bot</span>
+                        </div>
+                        <div class="tut-info-box" id="step03_info_box">
+                            In der Liste der gefundenden Bots sollte nun unser aufgelistet sein. Klicke auf den Namen um mit dem Bot zu kommunizieren
+                        </div>
+                        <div class="tut-info-box" id="step04_info_box">
+                            Durch klicken auf <span style="font-family:monospace">Neu Starten</span> beginnst du mit dem Bot zu chatten
+                        </div>
+                        <div class="tut-info-box green" id="step05_info_box">
+                            Viel Spaß!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="spacer">
+            <h1>Workshop</h1>
+        </div>
+        <section id="section03">
+            <div class="parallax-box bg03">
+            </div>
+        </section>
+        <div class="spacer">
+            <h1>Prototyp</h1>
+        </div>
+        <section id="section04">
+            <div class="parallax-box bg01">
+            </div>
+        </section>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>

@@ -1,0 +1,328 @@
+/* Animations */
+@keyframes splash-title {
+    0% {
+        transform: scale(3,0);
+    }
+    25% {
+        transform: scale(3,0);
+    }
+    100% {
+        transform: scale(1,1);
+    }
+}
+/* == */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    height: 100%;
+}
+body {
+    background: #f0f0f0;
+    color: #333333;
+    position: relative;
+    height: 100%;
+    font-family: 'Raleway', sans-serif;
+}
+section {
+    display: block;
+    height: 100%;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+section .parallax-box {
+    height: 200%;
+    position: relative;
+    top: -100%;
+}
+section .bottom {
+    position: absolute;
+    width: 100vw;
+    bottom: 10%;
+}
+section .bottom > div {
+    max-width: 1000px;
+    margin: 0 auto;
+    font-size: 2em;
+    text-shadow: 1px 1px 2px #303030;
+}
+table {
+    width: 100%;
+    margin: 10px 0;
+}
+table th, table td {
+    padding: 5px;
+}
+table th {
+    background-color: #eeeeff;
+}
+.parallax-box div.top {
+    position: relative;
+    top: 10%;
+    color: #000;
+}
+section .content {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+section .content .content-inner {
+    max-width: 1000px;
+    margin:0 auto;
+    background-color: #f2f9ff;
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px #808080;
+    overflow: hidden;
+}
+em {
+    color: #f05500;
+    font-style: normal;
+    font-family: 'Varela Round', sans-serif;
+}
+.spacer {
+    height: 150px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 150px;
+    background-color: #a0e5a0;
+}
+.spacer-small {
+    height: 3em;
+}
+.info-box {
+    background-color: #f2f9ff;
+    border-radius: 10px;
+    font-size: 2.5em;
+    padding: 15px;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    line-height: 1.3em;
+    box-shadow: 0px 0px 15px #808080;
+}
+.section-overlay {
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
+    top: 50%;
+    opacity: 0;
+    pointer-events: none;
+}
+.bg01 {
+    background-image: url('img/doodles.png');
+}
+.bg02 {
+    background-image: url('img/hypnotize.png');
+}
+.bg03 {
+    background-image: url('img/memphis-colorful.png');
+}
+#splash-title {
+    display: block;
+    font-family: 'Varela Round', sans-serif;
+    position: relative;
+    font-size: 10em;
+    animation-name: splash-title;
+    animation-duration: 0.5s;
+    text-shadow: 0px 0px 5px #858585;
+    margin: 0 auto;
+    background: #fff;
+    border-bottom: 1px dashed #5d5d5d;
+    margin-bottom: 20px;
+}
+#splash-title img {
+    width: 200px;
+}
+#questions-cycle {
+    font-family: 'Reenie Beanie', cursive;
+    font-size: 5em;
+    text-shadow: 1px 1px 2px #303030;
+    height: 200px;
+}
+
+/* Sections */
+#section-tutorial {
+    height: 3560px;
+}
+
+#tut-phone {
+    position: absolute;
+    width: 359px;
+    height: 737px;
+    background-image: url('img/phone.png');
+    background-repeat: no-repeat;
+    top: 50px;
+    left: 50%;
+    margin-left: -180px;
+}
+#tut-step {
+    position: absolute;
+    left: 17px;
+    top: 102px;
+    width: 323px;
+    height: 509px;
+    overflow: hidden;
+    background-image: url('img/tutorial/step_all.png');
+    background-repeat: no-repeat;
+    background-position: top left;
+}
+#tut-phone svg {
+    position: relative;
+    z-index: 1;
+}
+.tut-info-box {
+    position: absolute;
+    border: 5px solid #ff0000;
+    border-radius: 5px;
+    background-color: #ffeeee;
+    font-size: 1.2em;
+    padding: 0 10px;
+    left: 438px;
+    width: 300px;
+    height: 0;
+    overflow: hidden;
+    display: none;
+    box-sizing: border-box;
+    font-family: 'PT Sans', sans-serif;
+}
+.tut-info-box.green {
+    border-color: #00ff00;
+    background-color: #eeffee;
+}
+#step01_info_box, #step02_info_box {
+    top: 110px;
+}
+#step03_info_box {
+    top: 196px;
+}
+#step04_info_box, #step05_info_box {
+    top: 515px;
+}
+
+/* Section Features */
+#section-features {
+    height: 6000px;
+}
+#feature-content {
+    position: relative;
+    height: 600px;
+}
+.feature {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background: #f2f9ff;
+}
+.feature .feature-left-side {
+    position: relative;
+    float: left;
+    box-sizing: border-box;
+    width: 50%;
+    height: 50%;
+    text-align: left;
+    padding: 15px;
+}
+.feature .feature-right-side {
+    position: relative;
+    padding: 15px;
+    text-align: left;
+    float: left;
+    width: 50%;
+    height: 50%;
+    box-sizing: border-box;
+}
+#feature-location-map {
+    position: relative;
+    width: 50%;
+    height: auto;
+    border-radius: 10px;
+}
+#feature-location-map img {
+    width: 100%;
+    height: 100%;
+}
+#feature-location-map .feature-location-marker {
+    position: absolute;
+    width: 21px;
+    height: 25px;
+    background-image: url('img/marker.png');
+    opacity: 0;
+}
+.content-inner h2 {
+    text-shadow: 1px 1px 1px #858585;
+    color: #fff;
+    background: #55aaff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 30px;
+    margin: 0 -30px 30px -30px;
+}
+.content-inner h3 {
+    position: relative;
+    background: #eeeeff;
+    border-left: 3px solid #88bbff;
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 100%;
+    border-bottom: 1px dashed #88bbff;
+}
+.quote {
+    display: inline-block;
+    font-family: 'Reenie Beanie', cursive;
+    font-size: 2em;
+    padding: 5px;
+    margin-left: 10px;
+    overflow: hidden;
+    width: 0;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+.response {
+    position: relative;
+    display: block;
+    font-family: monospace;
+    margin-left: 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+    font-size: 1.2em;
+    background-color: #a0e5a0;
+    padding: 10px;
+    border-radius: 10px;
+}
+.feature-lecture-info {
+    text-align: left;
+    padding: 15px;
+    border-bottom: 1px dashed #88bbff;
+    position: relative;
+    overflow: hidden;
+}
+.feature-lecture-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 100%;
+    z-index: 1;
+    background: #88bbff;
+}
+.feature-lecture-info .feature-lecture-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    opacity: 0.3;
+}
+.feature-lecture-info .feature-lecture-title span {
+    font-size: 0.5em;
+    display: block;
+    font-weight: normal;
+}
+.feature-lecture-info .feature-lecture-info-content {
+    opacity: 0.3;
+}
