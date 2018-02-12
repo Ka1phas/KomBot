@@ -1,4 +1,4 @@
-from kombot import send_message, db, GERMAN_WEEKDAYS
+from kombot import send_message, send_location, db, GERMAN_WEEKDAYS
 
 g_skill_text = None
 g_text = None
@@ -22,6 +22,8 @@ def get_skill_match(skill_name, skill_text, text, chat):
         return get_how_to_use()
     elif skill_name == "GetLectureTime":
         return get_lecture_time()
+    elif skill_name == "GetLecturePlace":
+        return get_lecture_place()
     elif skill_name == "GetRoom":
         return get_semester_fee()
     elif skill_name == "GetSemesterFee":
@@ -76,10 +78,26 @@ def get_lecture_time():
         message = "Die Vorlesung {} findet von {} Uhr bis {} Uhr am {} statt.".format(matched_lecture["title"], matched_lecture["start"], matched_lecture["end"], GERMAN_WEEKDAYS[matched_lecture["weekday"]])
     else:
         message = ("Ich kenne diese Vorlesung leider nicht, oder du hast nicht den richtigen Namen verwendet. Die Bezeichnungen findest du hier:"
-                   "https://campus.uni-due.de")
+                   "https://www.uni-due.de/imperia/md/content/vv/vvz_ws_2017-18_due_1011_inkowiss.pdf")
     send_message(message, g_chat)
     return True
 
+def get_lecture_place():
+    global g_chat, g_text
+    lectures = db.get_all_lecture_infos()
+    matched_lecture = match_lecture_name(g_text, lectures)
+    message = ""
+    found = False
+    if matched_lecture:
+        message = "Die Vorlesung {} findet im Raum {} statt.".format(matched_lecture["title"], matched_lecture["room_name"])
+        found = True
+    else:
+        message = ("Ich kenne diese Vorlesung leider nicht, oder du hast nicht den richtigen Namen verwendet. Die Bezeichnungen findest du hier:"
+                   "https://www.uni-due.de/imperia/md/content/vv/vvz_ws_2017-18_due_1011_inkowiss.pdf")
+    send_message(message, g_chat)
+    if found:
+        send_location(g_chat, matched_lecture["room_longitude"], matched_lecture["room_latitude"])
+    return True
 
 def get_semester_fee():
     global g_chat

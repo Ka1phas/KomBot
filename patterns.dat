@@ -5,6 +5,10 @@ GetLectureTime Wann ist die Veranstaltung _
 GetLectureTime Um wieviel Uhr ist die Veranstaltung _
 GetLectureTime Um welche Uhrzeit ist die Veranstaltung _
 
+GetLecturePlace Wo findet _ statt
+GetLecturePlace Wo _ die Vorlesung _
+GetLecturePlace In welchem Raum findet _ statt
+
 GetRoom Wo ist der Raum _
 GetRoom Wo finde ich den Raum _
 
