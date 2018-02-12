@@ -114,6 +114,20 @@ class DBManager:
             return room_infos;
         else:
             return None
+    def get_all_room_infos(self):
+        stmt = ("SELECT name, floor, longitude, latitude"
+                " FROM room")
+        result = self.connection.execute(stmt)
+        rooms = []
+        for row in result:
+            room = {
+                "name": row[0],
+                "floor": row[1],
+                "longitude": row[2],
+                "latitude": row[3]
+                }
+            rooms.append(room)
+        return rooms
 
     def get_studentlectures(self, owner):
         stmt = ("SELECT title FROM lecture"

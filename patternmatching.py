@@ -25,7 +25,9 @@ def get_skill_match(skill_name, skill_text, text, chat):
     elif skill_name == "GetLecturePlace":
         return get_lecture_place()
     elif skill_name == "GetRoom":
-        return get_semester_fee()
+        return get_room()
+    elif skill_name == "GeneralWhere":
+        return question_where()
     elif skill_name == "GetSemesterFee":
         return get_semester_fee()
     elif skill_name == "GetVPN":
@@ -99,6 +101,22 @@ def get_lecture_place():
         send_location(g_chat, matched_lecture["room_longitude"], matched_lecture["room_latitude"])
     return True
 
+def get_room():
+    global g_chat, g_text
+    rooms = db.get_all_room_infos()
+    matched_room = match_room_name(g_text, rooms)
+    message = ""
+    found = False
+    if matched_room:
+        message = "Der Raum befindet sich hier:"
+        found = True
+    else:
+        message = "Ich kenne diesen Raum leider nicht."
+    send_message(message, g_chat)
+    if found:
+        send_location(g_chat, matched_room["longitude"], matched_room["latitude"])
+    return True
+
 def get_semester_fee():
     global g_chat
     answer = "Der Sozial- und Studierendenschaftsbeitrag beträgt für das Sommersemester 2018 insgesamt 304,62 €.\n" \
@@ -116,6 +134,12 @@ def get_vpn():
     send_message(answer, g_chat)
     return True
 
+def question_where():
+    global g_chat
+    answer = "Du suchst anscheind einen Ort. Was genau suchst du?"
+    send_message(answer, g_chat)
+    return True
+
 def match_lecture_name(input_text, lectures):
     titles = []
     for lecture in lectures:
@@ -124,4 +148,14 @@ def match_lecture_name(input_text, lectures):
     for title in titles:
         if(title in stripped_text):
             return lectures[titles.index(title)]
+    return None
+
+def match_room_name(input_text, rooms):
+    names = []
+    for room in rooms:
+        names.append(room["name"].lower().replace(" ", ""))
+    stripped_text = input_text.lower().replace(" ", "")
+    for name in names:
+        if(name in stripped_text):
+            return rooms[names.index(name)]
     return None

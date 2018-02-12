@@ -9,8 +9,11 @@ GetLecturePlace Wo findet _ statt
 GetLecturePlace Wo _ die Vorlesung _
 GetLecturePlace In welchem Raum findet _ statt
 
+GetRoom Wo ist Raum _
 GetRoom Wo ist der Raum _
 GetRoom Wo finde ich den Raum _
+
+GeneralWhere Wo _
 
 GetFreeSoftware Welche Programme gibt es kostenlos _
 GetFreeSoftware Welche Software gibt es kostenlos _
