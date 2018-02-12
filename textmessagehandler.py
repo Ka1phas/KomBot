@@ -7,6 +7,16 @@ __location__ = os.path.realpath(
 
 _wants_to_remove = []
 
+_german_weekdays = {
+    "Monday": "Montag",
+    "Tuesday": "Dienstag",
+    "Wednesday": "Mittwoch",
+    "Thursday": "Donnerstag",
+    "Friday": "Freitag",
+    "Saturday": "Samstag",
+    "Sunday": "Sonntag"
+}
+
 def handle_msg(msg):
     try:
         text = msg["message"]["text"]
@@ -112,6 +122,21 @@ def check_for_command(cmd, chat, args=None):
         for lecture in lectures:
             message += '\n' + lecture
         send_message(message, chat)
+    elif cmd == "getlectureinfos":
+        if args:
+            lecture_id = -1
+            try:
+                lecture_id = int(args[0])
+            except ValueError as err:
+                return
+            lecture_infos = db.get_lecture_infos(lecture_id);
+            print("[BOT]:: Command detected : GET LECTURE INFOS = " + lecture_infos["title"] + " on " + lecture_infos["weekday"] + " from " + lecture_infos["start"] + " to " + lecture_infos["end"] + " in room " + lecture_infos["room_name"])
+            message = "Die Vorlesung {} findet am {} von {} Uhr bis {} Uhr in Raum {} statt.".format(lecture_infos["title"],
+                                                                                            _german_weekdays[lecture_infos["weekday"]],
+                                                                                            lecture_infos["start"],
+                                                                                            lecture_infos["end"],
+                                                                                            lecture_infos["room_name"])
+            send_message(message, chat)
     else:
         print("[BOT]:: Command not found : " + cmd)
 

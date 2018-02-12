@@ -57,6 +57,26 @@ class DBManager:
         else:
             return -1
 
+    def get_lecture_infos(self, lecture_id):
+        stmt = ("SELECT title, weekday, start, end, name, floor, longitude, latitude"
+                " FROM lecture"
+                " INNER JOIN room"
+                " ON room.roomid = lecture.room"
+                " WHERE lectureid = (?)")
+        args = (lecture_id, )
+        result = self.connection.execute(stmt, args).fetchone()
+        lecture_infos = {
+            "title": result[0],
+            "weekday": result[1],
+            "start": result[2],
+            "end": result[3],
+            "room_name": result[4],
+            "room_floor": result[5],
+            "room_longitude": result[6],
+            "room_latitude": result[7]
+        }
+        return lecture_infos
+
     def get_studentlectures(self, owner):
         stmt = ("SELECT title FROM lecture"
                 " INNER JOIN studentlectures"
