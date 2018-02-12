@@ -1,5 +1,20 @@
 var controller = new ScrollMagic.Controller();
 
+var typed = new Typed('#questions-cycle', {
+    strings: [
+        "<span style=\"color:#f05500\">Wo ist der Raum LE105?</span>",
+        "<span style=\"color:#5500f0\">Wie kann ich mich zu Prüfungen anmelden?</span>",
+        "<span style=\"color:#ab00ab\">Was sind Versuchspersonstunden?</span>",
+        "<span style=\"color:#0000e0\">Wie teuer ist das nächste Semester?</span>",
+        "<span style=\"color:#335555\">Wo ist die Vorlesung InfoN?</span>",
+        "<span style=\"color:#9921ab\">Wo und wann ist die Prüfung von Psychologie?</span>"
+    ],
+    loop: true,
+    backDelay: 2000,
+    showCursor: false,
+    typeSpeed: 30,
+});
+
 // Section 01 Parallax
 new ScrollMagic.Scene({
     triggerElement: "#section01",
@@ -10,19 +25,44 @@ new ScrollMagic.Scene({
 .addIndicators()
 .addTo(controller);
 
+// Section 01 More Info Hide
+new ScrollMagic.Scene({
+    triggerElement: "#section01",
+    triggerHook: "onLeave",
+    duration: 100
+})
+.setTween("#start-more-info", {opacity: 0, ease: Linear.easeNone})
+.addIndicators()
+.addTo(controller);
+
+var tween_section01_overlay = new TimelineMax()
+.add(TweenMax.to("#section01-overlay", 1, {display: "block", opacity: 1}));
+
+// Section 01 Overlay
+var scrolloffset = E("#section01").offsetHeight * 0.75;
+new ScrollMagic.Scene({
+    triggerElement: "#section01",
+    triggerHook: "onCenter",
+    offset: scrolloffset,
+    duration: E("#section01").offsetHeight
+})
+.setTween(tween_section01_overlay)
+.addIndicators({name:"Start Overlay"})
+.addTo(controller);
+
 // Section 02 Parallax
 new ScrollMagic.Scene({
-    triggerElement: "#section02",
+    triggerElement: "#section-tutorial",
     triggerHook: "onEnter",
     duration: "300%"
 })
-.setTween("#section02 > div.parallax-box", {y: "20%", ease: Linear.easeNone})
+.setTween("#section-tutorial > div.parallax-box", {y: "20%", ease: Linear.easeNone})
 .addIndicators()
 .addTo(controller);
 
 // Section 02 Pin Phone
 new ScrollMagic.Scene({
-    triggerElement: "#section02",
+    triggerElement: "#section-tutorial",
     triggerHook: "onCenter",
     offset: 400,
     duration: 2600
@@ -40,7 +80,7 @@ var tween_step01note = new TimelineMax()
 .pause();
 
 new ScrollMagic.Scene({
-    triggerElement: "#section02",
+    triggerElement: "#section-tutorial",
     triggerHook: "onCenter",
     offset: 400,
     duration: 300
@@ -64,7 +104,7 @@ var tween_step02note = new TimelineMax()
 .pause();
 
 new ScrollMagic.Scene({
-    triggerElement: "#section02",
+    triggerElement: "#section-tutorial",
     triggerHook: "onCenter",
     offset: 1000,
     duration: 300
@@ -92,7 +132,7 @@ var tween_step03note = new TimelineMax()
 .pause();
 
 new ScrollMagic.Scene({
-    triggerElement: "#section02",
+    triggerElement: "#section-tutorial",
     triggerHook: "onCenter",
     offset: 1600,
     duration: 300
@@ -116,7 +156,7 @@ var tween_step04note = new TimelineMax()
 .pause();
 
 new ScrollMagic.Scene({
-    triggerElement: "#section02",
+    triggerElement: "#section-tutorial",
     triggerHook: "onCenter",
     offset: 2200,
     duration: 300
@@ -142,7 +182,7 @@ var tween_step05note = new TimelineMax()
 .add(TweenMax.to(E("#step05_info_box"), 0.2, {height: step05_info_box_height, display: "block", padding: 10, ease:Linear.easeNone}));
 
 new ScrollMagic.Scene({
-    triggerElement: "#section02",
+    triggerElement: "#section-tutorial",
     triggerHook: "onCenter",
     offset: 2500,
 })

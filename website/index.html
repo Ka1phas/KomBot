@@ -10,21 +10,36 @@
         <script type="text/javascript" src="js/scrollmagic/ScrollMagic.min.js"></script>
         <script type="text/javascript" src="js/scrollmagic/animation.gsap.min.js"></script>
         <script type="text/javascript" src="js/scrollmagic/debug.addIndicators.min.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet"> 
+        <script type="text/javascript" src="js/typed/typed.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Raleway|PT+Sans|Raleway|Reenie+Beanie" rel="stylesheet"> 
         <title>KomBot</title>
     </head>
     <body>
         <section id="section01">
             <div class="parallax-box bg01">
-                <div>
-                    <h1 id="splash-title">KomBot</h1>
+                <div class="top">
+                    <h1 id="splash-title">
+                        <img src="img/logo.png" />
+                        KomBot
+                    </h1>
+                    <div id="questions-cycle"></div>
+                    <div class="info-box">
+                        Du hast viele Fragen aber weißt nicht an wen du dich wenden sollst und die Webseite der Universität ist zu verwirrend?<br>
+                        Dann ist <em>KomBot</em> die Lösung!
+                    </div>
                 </div>
             </div>
+            <div class="bottom">
+                <div id="start-more-info">
+                    Scroll runter um mehr über <em>KomBot</em> zu erfahren
+                </div>
+            </div>
+            <div id="section01-overlay" class="section-overlay"></div>
         </section>
         <div class="spacer">
             <h1>Wie kann ich den Bot nutzen?</h1>
         </div>
-        <section id="section02">
+        <section id="section-tutorial">
             <div class="parallax-box bg02"></div>
             <div class="content">
                 <div id="tut-phone">
