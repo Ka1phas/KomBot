@@ -67,14 +67,29 @@ var tween_features = new TimelineMax()
 .fromTo(E("#feature-location-marker01"), 1, {left:"72%", top:0, opacity:0}, {left:"72%", top: "36%", opacity:1})
 .fromTo(E("#feature-room-search-title02"), 1, {autoAlpha:0, left:"200%"}, {autoAlpha:1,left: 0})
 .fromTo(E("#feature-location-search02"), 1,{paddingLeft:0, paddingRight:0, width:0}, {paddingLeft:5, paddingRight:5, width: "100%"})
-.fromTo(E("#feature-location-marker02"), 1, {left:"35%", top:0, opacity:0}, {left:"35%", top:"78%", opacity: 1});
+.fromTo(E("#feature-location-marker02"), 1, {left:"35%", top:0, opacity:0}, {left:"35%", top:"78%", opacity: 1})
+.to(E("#feature-lecture"), 1, {left: 0, delay: 1})
+.fromTo(E("#feature-lecture-title01"), 1, {autoAlpha:0, left:"200%"}, {autoAlpha:1,left:0})
+.fromTo(E("#feature-lecture-search01"), 1, {paddingLeft:0, paddingRight:0, width:0}, {paddingLeft:5, paddingRight:5, width: "100%"})
+.to(E("#feature-lecture-overlay01"), 2, {right:0, ease:Expo.easeIn})
+.to(E("#feature-lecture-overlay01"), 2, {right:"100%", ease:Expo.easeOut})
+.fromTo(E("#feature-lecture-infon .feature-lecture-title"), 0, {opacity: 0.5}, {opacity: 1}, "-=2")
+.fromTo(E("#feature-lecture-infon .feature-lecture-info-content"), 0, {opacity: 0.5}, {opacity: 1}, "-=2")
+.fromTo(E("#feature-lecture-response01"), 1, {left: "200%"}, {left: 0}, "-=2")
+.fromTo(E("#feature-lecture-title02"), 1, {autoAlpha:0, left:"200%"}, {autoAlpha:1,left:0})
+.fromTo(E("#feature-lecture-search02"), 1, {paddingLeft:0, paddingRight:0, width:0}, {paddingLeft:5, paddingRight:5, width: "100%"})
+.to(E("#feature-lecture-overlay02"), 2, {right:0, ease:Expo.easeIn})
+.to(E("#feature-lecture-overlay02"), 2, {right:"100%", ease:Expo.easeOut})
+.fromTo(E("#feature-lecture-psycho .feature-lecture-title"), 0, {opacity: 0.5}, {opacity: 1}, "-=2")
+.fromTo(E("#feature-lecture-psycho .feature-lecture-info-content"), 0, {opacity: 0.5}, {opacity: 1}, "-=2")
+.fromTo(E("#feature-lecture-response02"), 1, {left: "200%"}, {left: 0}, "-=2");
 
 // Section Features Pin Info Box
 new ScrollMagic.Scene({
     triggerElement: "#section-features",
     triggerHook: "onCenter",
     offset: 400,
-    duration: 2000
+    duration: 4200
 })
 .setPin("#feature-content-wrap")
 .setTween(tween_features)
