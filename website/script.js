@@ -96,7 +96,7 @@ new ScrollMagic.Scene({
     triggerElement: "#section-tutorial",
     triggerHook: "onCenter",
     offset: 400,
-    duration: 300
+    duration: 2600
 })
 .setPin("#tut-phone")
 .addIndicators()
