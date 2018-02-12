@@ -13,7 +13,10 @@ GetRoom Wo ist Raum _
 GetRoom Wo ist der Raum _
 GetRoom Wo finde ich den Raum _
 
-GeneralWhere Wo _
+GetMenu Was gibt es heute zu Essen
+GetMenu _ Speiseplan _
+GetMenu _ Mensa _
+GetMenu _ Mittagessen _
 
 GetFreeSoftware Welche Programme gibt es kostenlos _
 GetFreeSoftware Welche Software gibt es kostenlos _
@@ -38,3 +41,5 @@ GetVPN _ Cisco AnyConnect _
 GetVPN _ Openconnect _
 
 GetCertificateOfStudy _ Studienbescheinigung _
+
+GeneralWhere Wo _

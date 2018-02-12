@@ -1,4 +1,5 @@
-from kombot import send_message, send_location, db, GERMAN_WEEKDAYS
+from kombot import send_message, send_message_html, send_location, db, GERMAN_WEEKDAYS
+from canteenmenuhelper import get_menu_as_string
 import json
 
 _wants_to_know_where = []
@@ -27,6 +28,8 @@ def get_skill_match(skill_name, skill_text, text, chat):
         return get_lecture_time()
     elif skill_name == "GetLecturePlace":
         return get_lecture_place()
+    elif skill_name == "GetMenu":
+        return get_menu()
     elif skill_name == "GetRoom":
         return get_room()
     elif skill_name == "GeneralWhere":
@@ -103,6 +106,13 @@ def get_lecture_place():
     if found:
         send_location(g_chat, matched_lecture["room_longitude"], matched_lecture["room_latitude"])
     return True
+
+def get_menu():
+    global g_chat
+    menu = get_menu_as_string()
+    send_message_html(menu, g_chat)
+    return True
+
 
 def get_room():
     global g_chat, g_text

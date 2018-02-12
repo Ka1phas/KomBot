@@ -71,6 +71,14 @@ def send_message(text, chat_id, reply_markup=None):
     print("[BOT]:: Sending new response to telegram bot api: " + url)
     get_url(url)
 
+def send_message_html(text, chat_id, reply_markup=None):
+    text = urllib.parse.quote_plus(text)
+    url = URL + "sendMessage?text={}&chat_id={}&parse_mode={}".format(text, chat_id,'html')
+    if reply_markup:
+        url += "&reply_markup={}".format(reply_markup)
+    print("[BOT]:: Sending new response to telegram bot api: " + url)
+    get_url(url)
+
 def send_location(chat_id, longitude, latitude):
     url = URL + "sendlocation?chat_id={}&longitude={}&latitude={}".format(chat_id, longitude, latitude)
     print("[BOT]:: Sending new location to telegram bot api: " + url)
