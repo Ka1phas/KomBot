@@ -208,7 +208,7 @@ em {
 
 /* Section Features */
 #section-features {
-    height: 5000px;
+    height: 6000px;
 }
 #feature-content {
     position: relative;
@@ -222,10 +222,13 @@ em {
     background: #f2f9ff;
 }
 .feature .feature-left-side {
+    position: relative;
     float: left;
     box-sizing: border-box;
     width: 50%;
     height: 50%;
+    text-align: left;
+    padding: 15px;
 }
 .feature .feature-right-side {
     position: relative;
@@ -233,6 +236,7 @@ em {
     text-align: left;
     float: left;
     width: 50%;
+    height: 50%;
     box-sizing: border-box;
 }
 #feature-location-map {
@@ -269,7 +273,6 @@ em {
     padding: 5px;
     width: 100%;
     border-bottom: 1px dashed #88bbff;
-    left: 200%;
 }
 .quote {
     display: inline-block;
