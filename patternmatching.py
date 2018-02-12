@@ -1,4 +1,7 @@
 from kombot import send_message, send_location, db, GERMAN_WEEKDAYS
+import json
+
+_wants_to_know_where = []
 
 g_skill_text = None
 g_text = None
@@ -137,7 +140,9 @@ def get_vpn():
 def question_where():
     global g_chat
     answer = "Du suchst anscheind einen Ort. Was genau suchst du?"
-    send_message(answer, g_chat)
+    options = [["Wo findet eine Vorlesung statt?"],["Wo befindet sich ein Raum?"]]
+    _wants_to_know_where.append(g_chat)
+    send_message(answer, g_chat, build_keyboard(options))
     return True
 
 def match_lecture_name(input_text, lectures):
@@ -159,3 +164,7 @@ def match_room_name(input_text, rooms):
         if(name in stripped_text):
             return rooms[names.index(name)]
     return None
+
+def build_keyboard(options):
+    reply_markup = {"keyboard": options, "one_time_keyboard": True}
+    return json.dumps(reply_markup)

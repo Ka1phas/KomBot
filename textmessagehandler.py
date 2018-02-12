@@ -1,5 +1,5 @@
 from kombot import send_message, send_location, db, GERMAN_WEEKDAYS
-from patternmatching import get_skill_match
+from patternmatching import get_skill_match, _wants_to_know_where
 import json
 import os
 
@@ -7,6 +7,8 @@ __location__ = os.path.realpath(
     os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
 _wants_to_remove = []
+_wants_to_know_lecture_room = []
+_wants_to_know_room = []
 
 
 def handle_msg(msg):
@@ -27,9 +29,29 @@ def get_pattern_match(text, chat):
         lectures = db.get_studentlectures(chat)
         if(text in lectures):
             db.delete_lecture_by_title(text, chat)
+            _wants_to_remove.remove(chat)
             message = "Ich habe die Vorlesung {} aus deinem Studenplan gelöscht.".format(text)
             send_message(message, chat)
             return
+    elif chat in _wants_to_know_where:
+        message = ""
+        if text == "Wo findet eine Vorlesung statt?":
+            message = "Um welche Vorlesung geht es?"
+            _wants_to_know_lecture_room.append(chat)
+        elif text == "Wo befindet sich ein Raum?":
+            message = "Um welchen Raum geht es?"
+            _wants_to_know_room.append(chat)
+        else:
+            message = "Oh dann frag mich doch einfach etwas anderes."
+        _wants_to_know_where.remove(chat)
+        send_message(message, chat)
+        return
+    elif chat in _wants_to_know_lecture_room:
+        text = "Wo findet {} statt?".format(text)
+        _wants_to_know_lecture_room.remove(chat)
+    elif chat in _wants_to_know_room:
+        text = "Wo ist Raum {}?".format(text)
+        _wants_to_know_room.remove(chat)
 
     cleaned_text = text.strip()
     removeChars = "_?!.-"
@@ -112,7 +134,7 @@ def check_for_command(cmd, chat, args=None):
     if cmd == "removelecture":
         _wants_to_remove.append(chat)
         lectures = db.get_studentlectures(chat)
-        keyboard = build_keyboard(lectures)
+        keyboard = build_lecture_keyboard(lectures)
         send_message("Wähle eine Vorlesung aus, die gelöscht werden soll",
                      chat,
                      keyboard)
@@ -183,7 +205,11 @@ def check_for_command(cmd, chat, args=None):
     else:
         print("[BOT]:: Command not found : " + cmd)
 
-def build_keyboard(lectures):
+def build_lecture_keyboard(lectures):
     keyboard = [[lecture] for lecture in lectures]
     reply_markup = {"keyboard": keyboard, "one_time_keyboard": True}
     return json.dumps(reply_markup)
+
+def waiting_for(option, chat):
+    if(option == "where"):
+        _wants_to_know_where.append(chat)
