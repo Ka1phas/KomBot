@@ -38,17 +38,44 @@ def get_pattern_match(text, chat):
             message = "Ich habe die Vorlesung {} aus deinem Studenplan gelöscht.".format(text)
             send_message(message, chat)
             return
+
+    cleaned_text = text.strip()
+    removeChars = "_?!.-"
+    for char in removeChars:
+        cleaned_text = cleaned_text.replace(char, "")
+
+
     with open(os.path.join(__location__, 'patterns.dat')) as file:
         for line in file:
+            if len(line) <= 1:
+                continue
+            print(line)
             skill_name =  line.split(' ', 1)[0]
             skill_text = line.split(' ', 1)[1]
-            skill_patterns = skill_text.split("...")
-            print(skill_patterns[0])
-            print(text)
-            if text.startswith(skill_patterns[0]):
+
+            skill_text = skill_text.strip()
+            skill_patterns = skill_text.split("_")
+
+            pattern_match = True
+
+            for x in range(0, len(skill_patterns)):
+                if len(skill_patterns[x]) == 0:
+                    continue
+                if x == 0:
+                    if not cleaned_text.startswith(skill_patterns[x]):
+                        pattern_match = False
+                        break
+                elif x == len(skill_patterns) - 1:
+                    if not cleaned_text.endswith(skill_patterns[x]):
+                        pattern_match = False
+                        break
+                else:
+                    if skill_patterns[x] not in cleaned_text:
+                        pattern_match = False
+                        break
+
+            if pattern_match:
                 send_message(skill_name, chat)
-                break
-            print(line)
 
 
 def handle_command(text, chat):
