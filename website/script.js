@@ -50,7 +50,38 @@ new ScrollMagic.Scene({
 .addIndicators({name:"Start Overlay"})
 .addTo(controller);
 
-// Section 02 Parallax
+// === Section Features ===
+// Section Features Parallax
+new ScrollMagic.Scene({
+    triggerElement: "#section-features",
+    triggerHook: "onEnter",
+    duration: "200%"
+})
+.setTween("#section-features > div.parallax-box", {y: "20%", ease: Linear.easeNone})
+.addTo(controller);
+
+// Section Features Timeline
+var tween_features = new TimelineMax()
+.fromTo(E("#feature-room-search-title01"), 1, {autoAlpha:0, left:"200%"}, {autoAlpha:1,left: 0})
+.fromTo(E("#feature-location-search01"), 1,{paddingLeft:0, paddingRight:0, width:0}, {paddingLeft:5, paddingRight:5, width: "100%"})
+.fromTo(E("#feature-location-marker01"), 1, {left:"72%", top:0, opacity:0}, {left:"72%", top: "36%", opacity:1})
+.fromTo(E("#feature-room-search-title02"), 1, {autoAlpha:0, left:"200%"}, {autoAlpha:1,left: 0})
+.fromTo(E("#feature-location-search02"), 1,{paddingLeft:0, paddingRight:0, width:0}, {paddingLeft:5, paddingRight:5, width: "100%"})
+.fromTo(E("#feature-location-marker02"), 1, {left:"35%", top:0, opacity:0}, {left:"35%", top:"78%", opacity: 1});
+
+// Section Features Pin Info Box
+new ScrollMagic.Scene({
+    triggerElement: "#section-features",
+    triggerHook: "onCenter",
+    offset: 400,
+    duration: 2000
+})
+.setPin("#feature-content-wrap")
+.setTween(tween_features)
+.addTo(controller);
+
+// === Section Tutorial ===
+// Section Tutorial Parallax
 new ScrollMagic.Scene({
     triggerElement: "#section-tutorial",
     triggerHook: "onEnter",
@@ -60,18 +91,18 @@ new ScrollMagic.Scene({
 .addIndicators()
 .addTo(controller);
 
-// Section 02 Pin Phone
+// Section Tutorial Pin Phone
 new ScrollMagic.Scene({
     triggerElement: "#section-tutorial",
     triggerHook: "onCenter",
     offset: 400,
-    duration: 2600
+    duration: 300
 })
 .setPin("#tut-phone")
 .addIndicators()
 .addTo(controller);
 
-// Section 02 1st Step - Note
+// Section Tutorial 1st Step - Note
 var step01_info_box_height = getInfoBoxHeight(E("#step01_info_box"));
 var tween_step01note = new TimelineMax()
 .add(TweenMax.to(E("#step01_highlight"), 0.2, {strokeDashoffset: 0, ease:Linear.easeNone}))
@@ -95,7 +126,7 @@ new ScrollMagic.Scene({
 .addIndicators()
 .addTo(controller);
 
-// Section 02 Phone 2nd Step
+// Section Tutorial Phone 2nd Step
 var step02_info_box_height = getInfoBoxHeight(E("#step02_info_box"));
 var tween_step02note = new TimelineMax()
 .add(TweenMax.to(E("#step02_highlight"), 0.2, {strokeDashoffset: 0, ease:Linear.easeNone}))
@@ -123,7 +154,7 @@ new ScrollMagic.Scene({
 .addIndicators()
 .addTo(controller);
 
-// Section 02 Phone 3rd Step
+// Section Tutorial Phone 3rd Step
 var step03_info_box_height = getInfoBoxHeight(E("#step03_info_box"));
 var tween_step03note = new TimelineMax()
 .add(TweenMax.to(E("#step03_highlight"), 0.2, {strokeDashoffset: 0, ease:Linear.easeNone}))
@@ -147,7 +178,7 @@ new ScrollMagic.Scene({
 .addIndicators()
 .addTo(controller);
 
-// Section 02 Phone 4th Step
+// Section Tutorial Phone 4th Step
 var step04_info_box_height = getInfoBoxHeight(E("#step04_info_box"));
 var tween_step04note = new TimelineMax()
 .add(TweenMax.to(E("#step04_highlight"), 0.2, {strokeDashoffset: 0, ease:Linear.easeNone}))
@@ -175,7 +206,7 @@ new ScrollMagic.Scene({
 .addIndicators()
 .addTo(controller);
 
-// Section 02 Phone 5th Step
+// Section Tutorial Phone 5th Step
 var step05_info_box_height = getInfoBoxHeight(E("#step05_info_box"));
 var tween_step05note = new TimelineMax()
 .add(TweenMax.fromTo(E("#tut-step"), 0.2, {backgroundPosition: "-646px 0px"}, {backgroundPosition: "-969px 0px", ease:Linear.easeNone}))
