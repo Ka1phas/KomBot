@@ -157,20 +157,30 @@ def check_for_command(cmd, chat, args=None):
             except ValueError as err:
                 return
             lecture_infos = db.get_lecture_infos(lecture_id)
-            print("[BOT]:: Command detected : GET LECTURE INFOS = " + lecture_infos["title"] + " on " + lecture_infos["weekday"] + " from " + lecture_infos["start"] + " to " + lecture_infos["end"] + " in room " + lecture_infos["room_name"])
-            message = "Die Vorlesung {} findet am {} von {} Uhr bis {} Uhr in Raum {} statt.".format(lecture_infos["title"],
+            if lecture_infos:
+                print("[BOT]:: Command detected : GET LECTURE INFOS = " + lecture_infos["title"] + " on " + lecture_infos["weekday"] + " from " + lecture_infos["start"] + " to " + lecture_infos["end"] + " in room " + lecture_infos["room_name"])
+                message = "Die Vorlesung {} findet am {} von {} Uhr bis {} Uhr in Raum {} statt.".format(lecture_infos["title"],
                                                                                             _german_weekdays[lecture_infos["weekday"]],
                                                                                             lecture_infos["start"],
                                                                                             lecture_infos["end"],
                                                                                             lecture_infos["room_name"])
-            send_message(message, chat)
+                send_message(message, chat)
+            else:
+                print("[BOT]:: Command detected : GET LECTURE INFOS = NO LECTURE FOUND!" )
+                message = "Tut mir Leid, ich weiß leider nichts über die Vorlesung mit dem Titel {}. Bist du dir sicher, dass sie existiert?".format(args[0])
+                send_message(message, chat)
     elif cmd == "getroominfos":
         if args:
             room_infos = db.get_room_infos(args[0])
-            print("[BOT]:: Command detected : GET ROOM INFOS = " + room_infos["name"] + " on floor " + str(room_infos["floor"]) + " at longitude " + room_infos["longitude"] + " and latitude " + room_infos["latitude"])
-            message = "Der Raum, den du suchst befindet sich hier im {} Stock:".format(str(room_infos["floor"]))
-            send_message(message, chat)
-            send_location(chat, room_infos["longitude"], room_infos["latitude"])
+            if room_infos:
+                print("[BOT]:: Command detected : GET ROOM INFOS = " + room_infos["name"] + " on floor " + str(room_infos["floor"]) + " at longitude " + room_infos["longitude"] + " and latitude " + room_infos["latitude"])
+                message = "Der Raum, den du suchst befindet sich hier im {} Stock:".format(str(room_infos["floor"]))
+                send_message(message, chat)
+                send_location(chat, room_infos["longitude"], room_infos["latitude"])
+            else:
+                print("[BOT]:: Command detected : GET ROOM INFOS = NO ROOM FOUND!" )
+                message = "Tut mir Leid, ich weiß leider nicht wo der Raum {} ist. Bist du dir sicher, dass er existiert?".format(args[0])
+                send_message(message, chat)
     else:
         print("[BOT]:: Command not found : " + cmd)
 

@@ -83,13 +83,16 @@ class DBManager:
                 " WHERE name = (?)")
         args = (room_name, )
         result = self.connection.execute(stmt, args).fetchone()
-        room_infos = {
-            "name": room_name,
-            "floor": result[0],
-            "longitude": result[1],
-            "latitude": result[2]
-            }
-        return room_infos;
+        if result:
+            room_infos = {
+                "name": room_name,
+                "floor": result[0],
+                "longitude": result[1],
+                "latitude": result[2]
+                }
+            return room_infos;
+        else:
+            return None
 
     def get_studentlectures(self, owner):
         stmt = ("SELECT title FROM lecture"
