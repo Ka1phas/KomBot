@@ -12,6 +12,16 @@ db = DBManager()
 TOKEN = cfg.api["key"]
 URL = "https://api.telegram.org/bot{}/".format(TOKEN)
 
+GERMAN_WEEKDAYS = {
+    "Monday": "Montag",
+    "Tuesday": "Dienstag",
+    "Wednesday": "Mittwoch",
+    "Thursday": "Donnerstag",
+    "Friday": "Freitag",
+    "Saturday": "Samstag",
+    "Sunday": "Sonntag"
+}
+
 
 def get_url(url):
     response = requests.get(url)

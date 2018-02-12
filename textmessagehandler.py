@@ -1,4 +1,4 @@
-from kombot import send_message, send_location, db
+from kombot import send_message, send_location, db, GERMAN_WEEKDAYS
 from patternmatching import get_skill_match
 import json
 import os
@@ -8,15 +8,6 @@ __location__ = os.path.realpath(
 
 _wants_to_remove = []
 
-_german_weekdays = {
-    "Monday": "Montag",
-    "Tuesday": "Dienstag",
-    "Wednesday": "Mittwoch",
-    "Thursday": "Donnerstag",
-    "Friday": "Freitag",
-    "Saturday": "Samstag",
-    "Sunday": "Sonntag"
-}
 
 def handle_msg(msg):
     try:
@@ -168,7 +159,7 @@ def check_for_command(cmd, chat, args=None):
             if lecture_infos:
                 print("[BOT]:: Command detected : GET LECTURE INFOS = " + lecture_infos["title"] + " on " + lecture_infos["weekday"] + " from " + lecture_infos["start"] + " to " + lecture_infos["end"] + " in room " + lecture_infos["room_name"])
                 message = "Die Vorlesung {} findet am {} von {} Uhr bis {} Uhr in Raum {} statt.".format(lecture_infos["title"],
-                                                                                            _german_weekdays[lecture_infos["weekday"]],
+                                                                                            GERMAN_WEEKDAYS[lecture_infos["weekday"]],
                                                                                             lecture_infos["start"],
                                                                                             lecture_infos["end"],
                                                                                             lecture_infos["room_name"])

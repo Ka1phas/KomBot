@@ -77,6 +77,27 @@ class DBManager:
         }
         return lecture_infos
 
+    def get_all_lecture_infos(self):
+         stmt = ("SELECT title, weekday, start, end, name, floor, longitude, latitude"
+                " FROM lecture"
+                " INNER JOIN room"
+                " ON room.roomid = lecture.room")
+         result = self.connection.execute(stmt)
+         lectures = []
+         for row in result:
+             info = {
+                "title": row[0],
+                "weekday": row[1],
+                "start": row[2],
+                "end": row[3],
+                "room_name": row[4],
+                "room_floor": row[5],
+                "room_longitude": row[6],
+                "room_latitude": row[7]
+             }
+             lectures.append(info)
+         return lectures
+
     def get_room_infos(self, room_name):
         stmt = ("SELECT floor, longitude, latitude"
                 " FROM room"

@@ -1,4 +1,4 @@
-from kombot import send_message
+from kombot import send_message, db, GERMAN_WEEKDAYS
 
 g_skill_text = None
 g_text = None
@@ -66,10 +66,18 @@ def get_how_to_use():
     return True
 
 def get_lecture_time():
-    global g_chat
-
-
-    send_message("LectureTime", g_chat)
+    global g_chat, g_text
+    lectures = db.get_all_lecture_infos()
+    for lecture in lectures:
+        print(lecture)
+    matched_lecture = match_lecture_name(g_text, lectures)
+    message = ""
+    if matched_lecture:
+        message = "Die Vorlesung {} findet von {} Uhr bis {} Uhr am {} statt.".format(matched_lecture["title"], matched_lecture["start"], matched_lecture["end"], GERMAN_WEEKDAYS[matched_lecture["weekday"]])
+    else:
+        message = ("Ich kenne diese Vorlesung leider nicht, oder du hast nicht den richtigen Namen verwendet. Die Bezeichnungen findest du hier:"
+                   "https://campus.uni-due.de")
+    send_message(message, g_chat)
     return True
 
 
@@ -89,3 +97,13 @@ def get_vpn():
              "https://www.uni-due.de/zim/services/internetzugang/openconnect.php"
     send_message(answer, g_chat)
     return True
+
+def match_lecture_name(input_text, lectures):
+    titles = []
+    for lecture in lectures:
+        titles.append(lecture["title"].lower().replace(" ", ""))
+    stripped_text = input_text.lower().replace(" ", "")
+    for title in titles:
+        if(title in stripped_text):
+            return lectures[titles.index(title)]
+    return None
