@@ -1,6 +1,5 @@
 from kombot import send_message
 
-
 g_skill_text = None
 g_text = None
 g_chat = None
@@ -13,24 +12,31 @@ def get_skill_match(skill_name, skill_text, text, chat):
     g_text = text
     g_chat = chat
 
-
-    if skill_name == "GetLectureTime":
-        return get_lecture_time()
+    if skill_name == "GetExamRegistration":
+        return get_exam_registration()
     elif skill_name == "GetFreeSoftware":
         return get_free_software()
-    elif skill_name == "HowToUse":
+    elif skill_name == "GetHowToUse":
         return get_how_to_use()
+    elif skill_name == "GetLectureTime":
+        return get_lecture_time()
     elif skill_name == "GetSemesterFee":
+        return get_semester_fee()
+    elif skill_name == "GetRoom":
         return get_semester_fee()
     else:
         print("Error: No pattern " + skill_name + " found.")
 
     return False
 
-
-def get_lecture_time():
+def get_exam_registration():
     global g_chat
-    send_message("LectureTime", g_chat)
+    answer = "Die Prüfungsanmeldephase für das Sommersemester 2018 beginnt am 07.05.2018 und endet am 18.05.18.\n" \
+             "Eine Prüfung kann über folgendes Portal angemeldet werden: \n\n" \
+             "https://campus.uni-due.de/lsf  \n\n" \
+             "Terminpläne für Bachelor und Master sind unter folgendem Link zu finden: \n\n" \
+             "https://www.uni-due.de/verwaltung/pruefungswesen/d_komed_startseite.php"
+    send_message(answer, g_chat)
     return True
 
 def get_free_software():
@@ -42,6 +48,14 @@ def get_how_to_use():
     global g_chat
     send_message("HowTo", g_chat)
     return True
+
+def get_lecture_time():
+    global g_chat
+
+
+    send_message("LectureTime", g_chat)
+    return True
+
 
 def get_semester_fee():
     global g_chat

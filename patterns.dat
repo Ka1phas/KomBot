@@ -4,6 +4,11 @@ GetLectureTime Um welche Uhrzeit findet _ statt
 GetLectureTime Wann ist die Veranstaltung _
 GetLectureTime Um wieviel Uhr ist die Veranstaltung _
 GetLectureTime Um welche Uhrzeit ist die Veranstaltung _
+
+GetRoom Wo ist der Raum _
+GetRoom Wo finde ich den Raum _
+
+
 GetFreeSoftware Welche Programme gibt es kostenlos _
 GetFreeSoftware Welche Software gibt es kostenlos _
 
@@ -14,3 +19,11 @@ GetHowToUse Wie funktioniert das _
 
 GetSemesterFee _ Semesterbeitrag _
 GetSemesterFee _ Semestergebühren _
+
+GetExamRegistration _ Prüfungsanmeldung _
+GetExamRegistration _ Prüfungen anmelden _
+
+GetVPN _ VPN _
+GetVPN _ Virtual Private Network _
+GetVPN _ Cisco AnyConnect _
+GetVPN _ Openconnect _
