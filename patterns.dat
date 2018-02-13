@@ -78,8 +78,11 @@ GetLearningGroup _ Lerngruppe _
 GetLearningGroup _ Lerngruppen _
 
 EasterEgg _ Game Design Thinking _
+Wat Wat
 
 AnswerHello _ Hallo _
+AnswerHello _ Hi _
+AnswerHello _ Hey _
 AnswerHowAreYou Wie geht es dir
 AnswerHowAreYou Wie gehts
 AnswerHowAreYou Wie gehts dir

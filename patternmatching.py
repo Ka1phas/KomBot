@@ -1,4 +1,4 @@
-from kombot import send_message, send_message_html, send_photo, send_location, build_keyboard, build_lecture_keyboard, build_keyboard_remove, db, GERMAN_WEEKDAYS
+from kombot import send_message, send_message_html, send_photo, send_location, build_keyboard, build_lecture_keyboard, build_keyboard_remove, db, GERMAN_WEEKDAYS, send_document
 from canteenmenuhelper import get_menu_as_string
 import json
 import os
@@ -64,6 +64,8 @@ def get_skill_match(skill_name, skill_text, text, chat):
         return delete_lecture_from_shedule()
     elif skill_name == "EasterEgg":
         return easter_egg()
+    elif skill_name == "Wat":
+        return wat()
     else:
         print("Error: No pattern " + skill_name + " found.")
 
@@ -304,4 +306,9 @@ def easter_egg():
         file = 'dummy.jpg'
     photo = {'photo': open(file, 'rb')}
     send_photo(g_chat, photo)
+    return True
+
+def wat():
+    g_chat
+    send_document(g_chat, {'document': open('wat.gif', 'rb')})
     return True
