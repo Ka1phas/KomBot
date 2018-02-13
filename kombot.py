@@ -28,6 +28,11 @@ def get_url(url):
     content = response.content.decode("utf8")
     return content
 
+def post_url(url, file):
+    response = requests.post(url, files=file)
+    content = response.content.decode("utf8")
+    return content
+
 
 def get_json_from_url(url):
     content = get_url(url)
@@ -78,6 +83,11 @@ def send_message_html(text, chat_id, reply_markup=None):
         url += "&reply_markup={}".format(reply_markup)
     print("[BOT]:: Sending new response to telegram bot api: " + url)
     get_url(url)
+
+def send_photo(chat_id, photo):
+    url = URL + "sendPhoto?chat_id={}".format(chat_id)
+    print("[BOT]:: Sending new image to telegram bot api: " + url)
+    post_url(url, photo)
 
 def send_location(chat_id, longitude, latitude):
     url = URL + "sendlocation?chat_id={}&longitude={}&latitude={}".format(chat_id, longitude, latitude)

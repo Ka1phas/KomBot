@@ -1,4 +1,4 @@
-from kombot import send_message, send_message_html, send_location, build_keyboard, build_lecture_keyboard, build_keyboard_remove, db, GERMAN_WEEKDAYS
+from kombot import send_message, send_message_html, send_photo, send_location, build_keyboard, build_lecture_keyboard, build_keyboard_remove, db, GERMAN_WEEKDAYS
 from canteenmenuhelper import get_menu_as_string
 import json
 
@@ -57,6 +57,8 @@ def get_skill_match(skill_name, skill_text, text, chat):
         return get_my_shedule()
     elif skill_name == "DeleteLectureFromShedule":
         return delete_lecture_from_shedule()
+    elif skill_name == "EasterEgg":
+        return easter_egg()
     else:
         print("Error: No pattern " + skill_name + " found.")
 
@@ -277,3 +279,9 @@ def match_room_name(input_text, rooms):
         if(name in stripped_text):
             return rooms[names.index(name)]
     return None
+
+def easter_egg():
+    g_chat
+    photo = {'photo': open('phil.jpg', 'rb')}
+    send_photo(g_chat, photo)
+    return True
