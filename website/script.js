@@ -291,12 +291,12 @@ var tween_workshop_pictures = new TimelineMax()
 .fromTo(E("#workshop-picture06"), 3, {opacity:0,right:"-50%",rotation:90}, {opacity:1,right:"-5%",rotation:-15,ease:Back.easeOut}, "-=2");
 
 var tween_workshop_pictures_merge = new TimelineMax()
-.to(E("#workshop-picture01"), 3, {left:200,rotation:0,top:250})
-.to(E("#workshop-picture02"), 3, {left:200,rotation:0,top:250})
-.to(E("#workshop-picture03"), 3, {left:200,rotation:0,top:250})
-.to(E("#workshop-picture04"), 3, {left:200,rotation:0,top:250})
-.to(E("#workshop-picture05"), 3, {left:200,rotation:0,top:250})
-.to(E("#workshop-picture06"), 3, {left:200,rotation:0,top:250})
+.to(E("#workshop-picture01"), 3, {left:200,rotation:0,top:650})
+.to(E("#workshop-picture02"), 3, {left:200,rotation:0,top:650})
+.to(E("#workshop-picture03"), 3, {left:200,rotation:0,top:650})
+.to(E("#workshop-picture04"), 3, {left:200,rotation:0,top:650})
+.to(E("#workshop-picture05"), 3, {left:200,rotation:0,top:650})
+.to(E("#workshop-picture06"), 3, {left:200,rotation:0,top:650})
 .to(E("#workshop-logo-overlay"), 2, {opacity:1,ease:Expo.easeOut})
 .to(E("#workshop-picture01"), 0, {opacity:0})
 .to(E("#workshop-picture02"), 0, {opacity:0})
@@ -311,7 +311,7 @@ new ScrollMagic.Scene({
     triggerElement: "#section-design",
     triggerHook: "onCenter",
     offset: 100,
-    duration: 400
+    duration: 500
 })
 .setTween(tween_workshop_pictures)
 .addTo(controller);
@@ -320,19 +320,19 @@ new ScrollMagic.Scene({
     triggerElement: "#section-design",
     triggerHook: "onCenter",
     offset: 800,
-    duration: 400
+    duration: 600
 })
 .setTween(tween_workshop_pictures_merge)
 .addTo(controller);
 
-new ScrollMagic.Scene({
+/*new ScrollMagic.Scene({
     triggerElement: "#section-design",
     triggerHook: "onCenter",
-    offset: 800,
-    duration: 800
+    offset: 1500,
+    duration: 100
 })
 .setPin("#workshop-picture-wrapper")
-.addTo(controller);
+.addTo(controller);*/
 
 // Section 04 Parallax
 new ScrollMagic.Scene({

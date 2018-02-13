@@ -339,9 +339,10 @@ em {
 }
 #workshop-picture-wrapper {
     width: 800px;
-    height: 800px;
+    height: 1000px;
     position: relative;
     margin:0 auto;
+    /*background: rgba(0,0,0,0.3);*/
 }
 .workshop-image {
     opacity: 0;
@@ -349,18 +350,20 @@ em {
     width: 400px;
     height: 300px;
     border: 10px solid #fff;
+    box-shadow: 0px 0px 5px #353535;
 }
 #workshop-logo {
-    width: 400px;
-    height: 210px;
-    border-top-width: 45px;
-    border-bottom-width: 45px;
+    width: 300px;
+    height: 300px;
+    border-left-width: 50px;
+    border-right-width: 50px;
     left: 200px;
-    top: 250px;
+    top: 650px;
     background: #fff;
+    box-shadow: 0px 0px 5px #353535;
 }
 #workshop-logo-overlay {
     box-shadow: 0px 0px 10px 00px #fff;
     left: 200px;
-    top: 250px;
+    top: 650px;
 }
