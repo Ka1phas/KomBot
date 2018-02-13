@@ -73,3 +73,7 @@ GetTestSubjectHours _ Versuchspersonenstunden _
 GetTestSubjectHours _ Versuchsperson _
 GetTestSubjectHours _ Versuchspersonen _
 GetTestSubjectHours _ VPS _
+
+GetLearningGroup _ Lerngruppe _
+GetLearningGroup _ Lerngruppen _
+

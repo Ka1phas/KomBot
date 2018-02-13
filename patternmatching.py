@@ -4,6 +4,7 @@ import json
 
 
 EMOJI_SAD = u'\U0001F613'
+EMOJI_NERD = u'\U0001F913'
 
 _wants_to_know_where = []
 _wants_to_remove = []
@@ -30,6 +31,8 @@ def get_skill_match(skill_name, skill_text, text, chat):
         return get_free_software()
     elif skill_name == "GetHowToUse":
         return get_how_to_use()
+    elif skill_name == "GetLearningGroup":
+        return get_learning_group()
     elif skill_name == "GetLectureTime":
         return get_lecture_time()
     elif skill_name == "GetLecturePlace":
@@ -106,6 +109,14 @@ def get_free_software():
 def get_how_to_use():
     global g_chat
     send_message("HowTo", g_chat)
+    return True
+
+def get_learning_group():
+    global g_chat
+    answer = "Lerngruppen findest du möglicherweise im komedia-Forum: \n" \
+             "http://fsr-komedia.zim.uni-due.de/forum/ \n\n" \
+             "Falls nicht: Geh in die Uni und sprich Kommilitonen an " + EMOJI_NERD
+    send_message(answer, g_chat)
     return True
 
 def get_lecture_time():
