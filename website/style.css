@@ -335,7 +335,7 @@ em {
 }
 /* Section Design */
 #section-design {
-    height: 3000px;
+    height: 1800px;
 }
 #workshop-picture-wrapper {
     width: 800px;
@@ -367,3 +367,42 @@ em {
     left: 200px;
     top: 650px;
 }
+.gdt-image {
+    display: inline-block;
+    position: absolute;
+    height: 167px;
+    width: 193px;
+    background-image: url('img/gdt.png');
+    z-index: 1;
+    opacity: 1;
+}
+#gdt-empathize { background-position: 0 0; right: -193px; top: 80px; }
+#gdt-define { background-position: -193px 0; left: -193px; top: -80px; }
+#gdt-ideate { background-position: -386px 0; right: -250px; top: 160px; }
+#gdt-prototype { background-position: -579px 0; left: -239px; bottom: 125px; }
+#gdt-test { background-position: -772px 0; left: -89px; bottom: 40px; }
+
+/* Section Team */
+#section-team {
+    height: 1000px;
+}
+#team-member-wrapper {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.team-member {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    padding: 15px;
+    box-shadow: 0px 0px 5px #303030;
+    background: #fff;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+#member01 {left:25%;margin-left:-63px}
+#member02 {right:25%;margin-right:-63px;}
+#member03 {top:300px;left:25%;margin-left:-63px;}
+#member04 {top:300px;right:25%;margin-right:-63px;}
+#member05 {top:600px;right:50%;margin-right:-127px}

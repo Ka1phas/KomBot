@@ -7,7 +7,7 @@ var typed = new Typed('#questions-cycle', {
         "<span style=\"color:#ab00ab\">Was sind Versuchspersonstunden?</span>",
         "<span style=\"color:#0000e0\">Wie teuer ist das nächste Semester?</span>",
         "<span style=\"color:#335555\">Wo ist die Vorlesung InfoN?</span>",
-        "<span style=\"color:#9921ab\">Wo und wann ist die Prüfung von Psychologie?</span>"
+        "<span style=\"color:#9921ab\">Was gibt's zu essen?</span>"
     ],
     loop: true,
     backDelay: 2000,
@@ -334,12 +334,73 @@ new ScrollMagic.Scene({
 .setPin("#workshop-picture-wrapper")
 .addTo(controller);*/
 
-// Section 04 Parallax
 new ScrollMagic.Scene({
-    triggerElement: "#section04",
-    triggerHook: "onEnter",
-    duration: "200%"
+    triggerElement: "#section-design",
+    triggerHook: "onCenter",
+    duration: 100
 })
-.setTween("#section04 > div.parallax-box", {y: "80%", ease: Linear.easeNone})
+.setTween(TweenMax.fromTo(E("#gdt-empathize"), 1, {top:00,opacity:0}, {top:80,opacity:1}))
+.addTo(controller);
+
+new ScrollMagic.Scene({
+    triggerElement: "#section-design",
+    triggerHook: "onCenter",
+    offset: 200,
+    duration: 100
+})
+.setTween(TweenMax.fromTo(E("#gdt-define"), 1, {top:20,opacity:0}, {top:100,opacity:1}))
+.addTo(controller);
+
+new ScrollMagic.Scene({
+    triggerElement: "#section-design",
+    triggerHook: "onCenter",
+    offset: 400,
+    duration: 100
+})
+.setTween(TweenMax.fromTo(E("#gdt-ideate"), 1, {top:80,opacity:0}, {top:160,opacity:1}))
+.addTo(controller);
+
+new ScrollMagic.Scene({
+    triggerElement: "#section-design",
+    triggerHook: "onCenter",
+    offset: 1200,
+    duration: 100
+})
+.setTween(TweenMax.fromTo(E("#gdt-prototype"), 1, {bottom:205,opacity:0}, {bottom:125,opacity:1}))
+.addTo(controller);
+
+new ScrollMagic.Scene({
+    triggerElement: "#section-design",
+    triggerHook: "onCenter",
+    offset: 1300,
+    duration: 100
+})
+.setTween(TweenMax.fromTo(E("#gdt-test"), 1, {bottom:120,opacity:0}, {bottom:40,opacity:1}))
+.addTo(controller);
+
+
+// Section Team Parallax
+new ScrollMagic.Scene({
+    triggerElement: "#section-team",
+    triggerHook: "onEnter",
+    duration: E("#section-team .parallax-box").offsetHeight
+})
+.setTween("#section-team > div.parallax-box", {y: "20%", ease: Linear.easeNone})
 .addIndicators()
+.addTo(controller);
+
+var tween_team = new TimelineMax()
+.fromTo(E("#member01"), 1, {padding:0,opacity:0,width:0,height:0}, {padding:15,opacity:1,width:250,height:250})
+.fromTo(E("#member02"), 1, {padding:0,opacity:0,width:0,height:0}, {padding:15,opacity:1,width:250,height:250})
+.fromTo(E("#member03"), 1, {padding:0,opacity:0,width:0,height:0}, {padding:15,opacity:1,width:250,height:250})
+.fromTo(E("#member04"), 1, {padding:0,opacity:0,width:0,height:0}, {padding:15,opacity:1,width:250,height:250})
+.fromTo(E("#member05"), 1, {padding:0,opacity:0,width:0,height:0}, {padding:15,opacity:1,width:250,height:250})
+
+new ScrollMagic.Scene({
+    triggerElement: "#section-team",
+    triggerHook: "onCenter",
+    offset: -100,
+    duration: 500
+})
+.setTween(tween_team)
 .addTo(controller);
