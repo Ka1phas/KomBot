@@ -281,6 +281,59 @@ new ScrollMagic.Scene({
 .addIndicators({name:"Start Parallax"})
 .addTo(controller);
 
+// Section Design Workshop Pictures
+var tween_workshop_pictures = new TimelineMax()
+.fromTo(E("#workshop-picture01"), 3, {opacity:0,left:"-50%",rotation:-90}, {opacity:1,left:"-5%",rotation:-15,ease:Back.easeOut})
+.fromTo(E("#workshop-picture02"), 3, {opacity:0,right:"-50%",rotation:90}, {opacity:1,right:"-5%",rotation:15,ease:Back.easeOut}, "-=2")
+.fromTo(E("#workshop-picture03"), 3, {opacity:0,left:"-50%",rotation:-80}, {opacity:1,left:"-5%",rotation:5,ease:Back.easeOut})
+.fromTo(E("#workshop-picture04"), 3, {opacity:0,right:"-50%",rotation:90}, {opacity:1,right:"-5%",rotation:3,ease:Back.easeOut}, "-=2")
+.fromTo(E("#workshop-picture05"), 3, {opacity:0,left:"-50%",rotation:-60}, {opacity:1,left:"-5%",rotation:-3,ease:Back.easeOut})
+.fromTo(E("#workshop-picture06"), 3, {opacity:0,right:"-50%",rotation:90}, {opacity:1,right:"-5%",rotation:-15,ease:Back.easeOut}, "-=2");
+
+var tween_workshop_pictures_merge = new TimelineMax()
+.to(E("#workshop-picture01"), 3, {left:200,rotation:0,top:250})
+.to(E("#workshop-picture02"), 3, {left:200,rotation:0,top:250})
+.to(E("#workshop-picture03"), 3, {left:200,rotation:0,top:250})
+.to(E("#workshop-picture04"), 3, {left:200,rotation:0,top:250})
+.to(E("#workshop-picture05"), 3, {left:200,rotation:0,top:250})
+.to(E("#workshop-picture06"), 3, {left:200,rotation:0,top:250})
+.to(E("#workshop-logo-overlay"), 2, {opacity:1,ease:Expo.easeOut})
+.to(E("#workshop-picture01"), 0, {opacity:0})
+.to(E("#workshop-picture02"), 0, {opacity:0})
+.to(E("#workshop-picture03"), 0, {opacity:0})
+.to(E("#workshop-picture04"), 0, {opacity:0})
+.to(E("#workshop-picture05"), 0, {opacity:0})
+.to(E("#workshop-picture06"), 0, {opacity:0})
+.to(E("#workshop-logo"), 3, {opacity:1}, "-=2")
+.to(E("#workshop-logo-overlay"), 2, {opacity:0,ease:Expo.easeIn})
+
+new ScrollMagic.Scene({
+    triggerElement: "#section-design",
+    triggerHook: "onCenter",
+    offset: 100,
+    duration: 400
+})
+.setTween(tween_workshop_pictures)
+.addTo(controller);
+
+new ScrollMagic.Scene({
+    triggerElement: "#section-design",
+    triggerHook: "onCenter",
+    offset: 800,
+    duration: 400
+})
+.setTween(tween_workshop_pictures_merge)
+.addTo(controller);
+
+new ScrollMagic.Scene({
+    triggerElement: "#section-design",
+    triggerHook: "onCenter",
+    offset: 800,
+    duration: 800
+})
+.setPin("#workshop-picture-wrapper")
+.addTo(controller);
+
 // Section 04 Parallax
 new ScrollMagic.Scene({
     triggerElement: "#section04",
