@@ -84,6 +84,19 @@ def send_location(chat_id, longitude, latitude):
     print("[BOT]:: Sending new location to telegram bot api: " + url)
     get_url(url)
 
+def build_keyboard(options):
+    reply_markup = {"keyboard": options, "one_time_keyboard": True, "hide_keyboard": True}
+    return json.dumps(reply_markup)
+
+def build_lecture_keyboard(lectures):
+    keyboard = [[lecture] for lecture in lectures]
+    reply_markup = {"keyboard": keyboard, "one_time_keyboard": True}
+    return json.dumps(reply_markup)
+
+def build_keyboard_remove():
+    reply_markup = {"remove_keyboard": True, "selective": True}
+    return json.dumps(reply_markup)
+
 
 def main():
     db.setup_timetable()

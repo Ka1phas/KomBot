@@ -9,6 +9,26 @@ GetLecturePlace Wo findet _ statt
 GetLecturePlace Wo _ die Vorlesung _
 GetLecturePlace In welchem Raum findet _ statt
 
+GetLectures Welche  _ Veranstaltungen _
+GetLectures Was für _ Veranstaltungen _
+GetLectures Welche  _ Vorlesungen _
+GetLectures Was für _ Vorlesungen _
+GetLectures Zeige  _ Veranstaltungen _
+GetLectures Zeige _ Vorlesungen _
+
+AddLectureToShedule Füge _ zu meinem Studenplan hinzu
+AddLectureToShedule _ Stundenplan _ zu
+AddLectureToShedule _ trage _ in _ ein
+
+DeleteLectureFromShedule Lösche _ meinem Stundenplan
+DeleteLectureFromShedule Entferne _ meinem Stundeplan
+DeleteLectureFromShedule Bearbeite _ Stundenplan
+
+GetMyShedule Zeige _ meine Vorlesungen
+GetMyShedule _ meine Vorlesungen _
+GetMyShedule _ meine Veranstaltungen _
+GetMyShedule Zeige _ meinen Stundenplan
+
 GetRoom Wo ist Raum _
 GetRoom Wo ist der Raum _
 GetRoom Wo finde ich den Raum _

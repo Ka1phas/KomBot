@@ -1,8 +1,12 @@
-from kombot import send_message, send_message_html, send_location, db, GERMAN_WEEKDAYS
+from kombot import send_message, send_message_html, send_location, build_keyboard, build_lecture_keyboard, build_keyboard_remove, db, GERMAN_WEEKDAYS
 from canteenmenuhelper import get_menu_as_string
 import json
 
+
+EMOJI_SAD = u'\U0001F613'
+
 _wants_to_know_where = []
+_wants_to_remove = []
 
 g_skill_text = None
 g_text = None
@@ -38,6 +42,14 @@ def get_skill_match(skill_name, skill_text, text, chat):
         return get_semester_fee()
     elif skill_name == "GetVPN":
         return get_vpn()
+    elif skill_name == "GetLectures":
+        return get_lectures()
+    elif skill_name == "AddLectureToShedule":
+        return add_lecture_to_shedule()
+    elif skill_name == "GetMyShedule":
+        return get_my_shedule()
+    elif skill_name == "DeleteLectureFromShedule":
+        return delete_lecture_from_shedule()
     else:
         print("Error: No pattern " + skill_name + " found.")
 
@@ -155,6 +167,53 @@ def question_where():
     send_message(answer, g_chat, build_keyboard(options))
     return True
 
+def get_lectures():
+    g_chat
+    lectures = db.get_all_lecture_infos()
+    message = "Das sind alle Vorlesungen:\n"
+    for lecture in lectures:
+        message += "\n " + lecture["title"] + "\n"
+    send_message(message, g_chat)
+    return True
+
+def add_lecture_to_shedule():
+    g_chat, g_text
+    lectures = db.get_all_lecture_infos()
+    shedule = db.get_studentlectures(g_chat)
+    matched_lecture = match_lecture_name(g_text, lectures)
+    message = ""
+    if matched_lecture["title"] in shedule:
+        message = "Die Vorlesung {} ist bereits in deinem Stundenplan eingetragen.".format(matched_lecture["title"])
+    elif matched_lecture:
+        lecture_id = db.get_lecture_id(matched_lecture["title"])
+        db.add_lecture(lecture_id, g_chat)
+        message = "Ich habe die Vorlesung {} zu deinem Stundenplan hinzugefügt. Sie ist am {} von {} Uhr bis {} Uhr in {}.".format(matched_lecture["title"],
+                                                                                                                                 GERMAN_WEEKDAYS[matched_lecture["weekday"]],
+                                                                                                                                 matched_lecture["start"], matched_lecture["end"],
+                                                                                                                                 matched_lecture["room_name"])
+    else:
+        message = ("Ich habe diese Vorlesung leider nicht gefunden." + EMOJI_SAD + "\nHier sind alle Vorlesungen aufgeführt:"
+                   "https://www.uni-due.de/imperia/md/content/vv/vvz_ws_2017-18_due_1011_inkowiss.pdf")
+    send_message(message, g_chat)
+    return True
+
+def delete_lecture_from_shedule():
+    g_chat
+    _wants_to_remove.append(g_chat)
+    lectures = db.get_studentlectures(g_chat)
+    keyboard = build_lecture_keyboard(lectures)
+    send_message("Wähle eine Vorlesung aus, die gelöscht werden soll", g_chat, keyboard)
+    return True
+
+def get_my_shedule():
+    g_chat
+    lectures = db.get_studentlectures(g_chat)
+    message = "Das sind alle deine Vorlesungen dieses Semester:\n"
+    for lecture in lectures:
+        message += "\n " + lecture + "\n"
+    send_message(message, g_chat)
+    return True
+
 def match_lecture_name(input_text, lectures):
     titles = []
     for lecture in lectures:
@@ -174,7 +233,3 @@ def match_room_name(input_text, rooms):
         if(name in stripped_text):
             return rooms[names.index(name)]
     return None
-
-def build_keyboard(options):
-    reply_markup = {"keyboard": options, "one_time_keyboard": True}
-    return json.dumps(reply_markup)

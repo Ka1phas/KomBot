@@ -1,12 +1,11 @@
-from kombot import send_message, send_location, db, GERMAN_WEEKDAYS
-from patternmatching import get_skill_match, _wants_to_know_where
+from kombot import send_message, send_location, build_keyboard, build_lecture_keyboard, build_keyboard_remove, db, GERMAN_WEEKDAYS
+from patternmatching import get_skill_match, _wants_to_know_where, _wants_to_remove
 import json
 import os
 
 __location__ = os.path.realpath(
     os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
-_wants_to_remove = []
 _wants_to_know_lecture_room = []
 _wants_to_know_room = []
 
@@ -31,8 +30,8 @@ def get_pattern_match(text, chat):
             db.delete_lecture_by_title(text, chat)
             _wants_to_remove.remove(chat)
             message = "Ich habe die Vorlesung {} aus deinem Studenplan gelöscht.".format(text)
-            send_message(message, chat)
-            return
+        send_message(message, chat, build_keyboard_remove())
+        return
     elif chat in _wants_to_know_where:
         message = ""
         if text == "Wo findet eine Vorlesung statt?":
@@ -44,7 +43,7 @@ def get_pattern_match(text, chat):
         else:
             message = "Oh dann frag mich doch einfach etwas anderes."
         _wants_to_know_where.remove(chat)
-        send_message(message, chat)
+        send_message(message, chat, build_keyboard_remove())
         return
     elif chat in _wants_to_know_lecture_room:
         text = "Wo findet {} statt?".format(text)
@@ -204,11 +203,6 @@ def check_for_command(cmd, chat, args=None):
                 send_message(message, chat)
     else:
         print("[BOT]:: Command not found : " + cmd)
-
-def build_lecture_keyboard(lectures):
-    keyboard = [[lecture] for lecture in lectures]
-    reply_markup = {"keyboard": keyboard, "one_time_keyboard": True}
-    return json.dumps(reply_markup)
 
 def waiting_for(option, chat):
     if(option == "where"):
