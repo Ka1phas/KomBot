@@ -22,6 +22,10 @@ def get_skill_match(skill_name, skill_text, text, chat):
     g_text = text
     g_chat = chat
 
+    if skill_name == "AnswerHello":
+        return answer_hello()
+    if skill_name == "AnswerHowAreYou":
+        return answer_how_are_you()
     if skill_name == "GetBotInformation":
         return get_bot_information()
     if skill_name == "GetCertificateOfStudy":
@@ -64,6 +68,18 @@ def get_skill_match(skill_name, skill_text, text, chat):
         print("Error: No pattern " + skill_name + " found.")
 
     return False
+
+def answer_hello():
+    global g_chat
+    answer = "Hallo :)"
+    send_message(answer, g_chat)
+    return True
+
+def answer_how_are_you():
+    global g_chat
+    answer = "Ich bin ein Bot und habe daher keine Gefühle"
+    send_message(answer, g_chat)
+    return True
 
 def get_bot_information():
     global g_chat
