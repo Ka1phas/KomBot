@@ -1,4 +1,4 @@
-from kombot import send_message, send_location, build_keyboard, build_lecture_keyboard, build_keyboard_remove, db, GERMAN_WEEKDAYS
+from kombot import send_message, send_location, send_document, build_keyboard, build_lecture_keyboard, build_keyboard_remove, db, GERMAN_WEEKDAYS
 from patternmatching import get_skill_match, _wants_to_know_where, _wants_to_remove
 import json
 import os
@@ -98,6 +98,7 @@ def get_pattern_match(text, chat):
         with open("unknown_requests.txt", "a") as myfile:
             myfile.write(cleaned_text)
         send_message("Das habe ich leider nicht verstanden.", chat)
+        send_document(chat, {'document': open('wat.gif', 'rb')})
 
 
 def handle_command(text, chat):

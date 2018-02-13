@@ -89,6 +89,11 @@ def send_photo(chat_id, photo):
     print("[BOT]:: Sending new image to telegram bot api: " + url)
     post_url(url, photo)
 
+def send_document(chat_id, photo):
+    url = URL + "sendDocument?chat_id={}".format(chat_id)
+    print("[BOT]:: Sending new image to telegram bot api: " + url)
+    post_url(url, photo)
+
 def send_location(chat_id, longitude, latitude):
     url = URL + "sendlocation?chat_id={}&longitude={}&latitude={}".format(chat_id, longitude, latitude)
     print("[BOT]:: Sending new location to telegram bot api: " + url)
