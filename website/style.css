@@ -216,7 +216,7 @@ em {
 #section-features {
     height: 6000px;
 }
-#feature-content {
+#feature-content, .feature-content {
     position: relative;
     height: 600px;
 }
@@ -297,6 +297,8 @@ em {
     display: block;
     font-family: monospace;
     margin-left: 10px;
+    margin-bottom: 1px;
+    margin-top: 1px;
     overflow: hidden;
     box-sizing: border-box;
     font-size: 1.2em;

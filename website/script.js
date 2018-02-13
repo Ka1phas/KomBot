@@ -22,7 +22,6 @@ new ScrollMagic.Scene({
     duration: "200%"
 })
 .setTween("#section01 > div.parallax-box", {y: "80%", ease: Linear.easeNone})
-.addIndicators()
 .addTo(controller);
 
 // Section 01 More Info Hide
@@ -32,7 +31,6 @@ new ScrollMagic.Scene({
     duration: 100
 })
 .setTween("#start-more-info", {opacity: 0, ease: Linear.easeNone})
-.addIndicators()
 .addTo(controller);
 
 var tween_section01_overlay = new TimelineMax()
@@ -47,7 +45,6 @@ new ScrollMagic.Scene({
     duration: E("#section01").offsetHeight
 })
 .setTween(tween_section01_overlay)
-.addIndicators({name:"Start Overlay"})
 .addTo(controller);
 
 // === Section Features ===
@@ -127,7 +124,6 @@ new ScrollMagic.Scene({
     duration: "300%"
 })
 .setTween("#section-tutorial > div.parallax-box", {y: "20%", ease: Linear.easeNone})
-.addIndicators()
 .addTo(controller);
 
 // Section Tutorial Pin Phone
@@ -138,7 +134,6 @@ new ScrollMagic.Scene({
     duration: 2600
 })
 .setPin("#tut-phone")
-.addIndicators()
 .addTo(controller);
 
 // Section Tutorial 1st Step - Note
@@ -162,7 +157,6 @@ new ScrollMagic.Scene({
         tween_step01note.reverse(0);
     }
 })
-.addIndicators()
 .addTo(controller);
 
 // Section Tutorial Phone 2nd Step
@@ -181,7 +175,7 @@ new ScrollMagic.Scene({
 })
 .on("enter leave", function(e) {
     if (e.type == "enter") {
-        TweenMax.to(E("#tut-step"), 0.2, {backgroundPosition: "-323px 0px", ease:Linear.easeNone});
+        TweenMax.fromTo(E("#tut-step"), 0.2, {backgroundPosition: "0px 0px"}, {backgroundPosition: "-323px 0px", ease:Linear.easeNone});
         tween_step02note.play();
     } else if(e.type == "leave") {
         tween_step02note.reverse(0);
@@ -190,7 +184,6 @@ new ScrollMagic.Scene({
         }
     }
 })
-.addIndicators()
 .addTo(controller);
 
 // Section Tutorial Phone 3rd Step
@@ -214,7 +207,6 @@ new ScrollMagic.Scene({
         tween_step03note.reverse(0);
     }
 })
-.addIndicators()
 .addTo(controller);
 
 // Section Tutorial Phone 4th Step
@@ -242,13 +234,12 @@ new ScrollMagic.Scene({
         }
     }
 })
-.addIndicators()
 .addTo(controller);
 
 // Section Tutorial Phone 5th Step
 var step05_info_box_height = getInfoBoxHeight(E("#step05_info_box"));
 var tween_step05note = new TimelineMax()
-.add(TweenMax.fromTo(E("#tut-step"), 0.2, {backgroundPosition: "-646px 0px"}, {backgroundPosition: "-969px 0px", ease:Linear.easeNone}))
+//.add(TweenMax.fromTo(E("#tut-step"), 0.2, {backgroundPosition: "-646px 0px"}, {backgroundPosition: "-969px 0px", ease:Linear.easeNone}))
 .add(TweenMax.to(E("#step05_info_box"), 0.2, {height: step05_info_box_height, display: "block", padding: 10, ease:Linear.easeNone}));
 
 new ScrollMagic.Scene({
@@ -268,7 +259,6 @@ new ScrollMagic.Scene({
     }
 })
 .setTween(tween_step05note)
-.addIndicators()
 .addTo(controller);
 
 // Section Design Parallax
@@ -278,7 +268,6 @@ new ScrollMagic.Scene({
     duration: E("#section-design .parallax-box").offsetHeight
 })
 .setTween("#section-design > div.parallax-box", {y: "20%", ease: Linear.easeNone})
-.addIndicators({name:"Start Parallax"})
 .addTo(controller);
 
 // Section Design Workshop Pictures
@@ -386,7 +375,6 @@ new ScrollMagic.Scene({
     duration: E("#section-team .parallax-box").offsetHeight
 })
 .setTween("#section-team > div.parallax-box", {y: "20%", ease: Linear.easeNone})
-.addIndicators()
 .addTo(controller);
 
 var tween_team = new TimelineMax()
