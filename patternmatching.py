@@ -42,6 +42,8 @@ def get_skill_match(skill_name, skill_text, text, chat):
         return question_where()
     elif skill_name == "GetSemesterFee":
         return get_semester_fee()
+    elif skill_name == "GetTestSubjectHours":
+        return get_test_subject_hours()
     elif skill_name == "GetVPN":
         return get_vpn()
     elif skill_name == "GetLectures":
@@ -165,6 +167,18 @@ def get_semester_fee():
     global g_chat
     answer = "Der Sozial- und Studierendenschaftsbeitrag beträgt für das Sommersemester 2018 insgesamt 304,62 €.\n" \
              "Der Beitrag kann bis zum 02.03.2018 überwiesen werden."
+    send_message(answer, g_chat)
+    return True
+
+def get_test_subject_hours():
+    global g_chat
+    answer = "Versuchspersonenstunden (VPS) werden für die Teilnahme an wissenschaftlichen Studien vergeben. \n" \
+             "Ausschreibungen findest du unter anderem im Komedia-Forum \n" \
+             "http://fsr-komedia.zim.uni-due.de/forum/ \n" \
+             "oder bei Facebook im Komedia-Versuchspersonenmarkt\n" \
+             "https://www.facebook.com/groups/1089565127742196/ \n\n" \
+             "Neben anderen Veranstaltungen sind 30 VPS die Voraussetzung um das Modul \"Methodologie psychologischer Forschung\" " \
+             "abzuschließen."
     send_message(answer, g_chat)
     return True
 
