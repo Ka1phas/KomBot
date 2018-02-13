@@ -66,3 +66,14 @@ GetCertificateOfStudy _ Studienbescheinigung _
 GeneralWhere Wo _
 
 GetBotInformation Was kannst du
+GetBotInformation Wie funktionierst du
+GetBotInformation Welche Funktionen hast du
+
+GetTestSubjectHours _ Versuchspersonenstunden _
+GetTestSubjectHours _ Versuchsperson _
+GetTestSubjectHours _ Versuchspersonen _
+GetTestSubjectHours _ VPS _
+
+GetLearningGroup _ Lerngruppe _
+GetLearningGroup _ Lerngruppen _
+

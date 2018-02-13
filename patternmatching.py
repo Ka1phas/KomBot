@@ -4,6 +4,7 @@ import json
 
 
 EMOJI_SAD = u'\U0001F613'
+EMOJI_NERD = u'\U0001F913'
 
 _wants_to_know_where = []
 _wants_to_remove = []
@@ -30,6 +31,8 @@ def get_skill_match(skill_name, skill_text, text, chat):
         return get_free_software()
     elif skill_name == "GetHowToUse":
         return get_how_to_use()
+    elif skill_name == "GetLearningGroup":
+        return get_learning_group()
     elif skill_name == "GetLectureTime":
         return get_lecture_time()
     elif skill_name == "GetLecturePlace":
@@ -42,6 +45,8 @@ def get_skill_match(skill_name, skill_text, text, chat):
         return question_where()
     elif skill_name == "GetSemesterFee":
         return get_semester_fee()
+    elif skill_name == "GetTestSubjectHours":
+        return get_test_subject_hours()
     elif skill_name == "GetVPN":
         return get_vpn()
     elif skill_name == "GetLectures":
@@ -106,6 +111,14 @@ def get_how_to_use():
     send_message("HowTo", g_chat)
     return True
 
+def get_learning_group():
+    global g_chat
+    answer = "Lerngruppen findest du möglicherweise im komedia-Forum: \n" \
+             "http://fsr-komedia.zim.uni-due.de/forum/ \n\n" \
+             "Falls nicht: Geh in die Uni und sprich Kommilitonen an " + EMOJI_NERD
+    send_message(answer, g_chat)
+    return True
+
 def get_lecture_time():
     global g_chat, g_text
     lectures = db.get_all_lecture_infos()
@@ -165,6 +178,18 @@ def get_semester_fee():
     global g_chat
     answer = "Der Sozial- und Studierendenschaftsbeitrag beträgt für das Sommersemester 2018 insgesamt 304,62 €.\n" \
              "Der Beitrag kann bis zum 02.03.2018 überwiesen werden."
+    send_message(answer, g_chat)
+    return True
+
+def get_test_subject_hours():
+    global g_chat
+    answer = "Versuchspersonenstunden (VPS) werden für die Teilnahme an wissenschaftlichen Studien vergeben. \n" \
+             "Ausschreibungen findest du unter anderem im Komedia-Forum \n" \
+             "http://fsr-komedia.zim.uni-due.de/forum/ \n" \
+             "oder bei Facebook im Komedia-Versuchspersonenmarkt\n" \
+             "https://www.facebook.com/groups/1089565127742196/ \n\n" \
+             "Neben anderen Veranstaltungen sind 30 VPS die Voraussetzung um das Modul \"Methodologie psychologischer Forschung\" " \
+             "abzuschließen."
     send_message(answer, g_chat)
     return True
 
