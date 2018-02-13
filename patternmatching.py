@@ -1,6 +1,7 @@
 from kombot import send_message, send_message_html, send_photo, send_location, build_keyboard, build_lecture_keyboard, build_keyboard_remove, db, GERMAN_WEEKDAYS
 from canteenmenuhelper import get_menu_as_string
 import json
+import os
 
 
 EMOJI_SAD = u'\U0001F613'
@@ -282,6 +283,9 @@ def match_room_name(input_text, rooms):
 
 def easter_egg():
     g_chat
-    photo = {'photo': open('phil.jpg', 'rb')}
+    file = 'phil.jpg'
+    if not os.path.exists(file):
+        file = 'dummy.jpg'
+    photo = {'photo': open(file, 'rb')}
     send_photo(g_chat, photo)
     return True
