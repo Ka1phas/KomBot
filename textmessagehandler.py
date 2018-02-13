@@ -96,7 +96,7 @@ def get_pattern_match(text, chat):
 
     if not gave_answer:
         with open("unknown_requests.txt", "a") as myfile:
-            myfile.write(cleaned_text)
+            myfile.write(cleaned_text + "\n")
         send_message("Das habe ich leider nicht verstanden.", chat)
         send_document(chat, {'document': open('wat.gif', 'rb')})
 
