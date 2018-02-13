@@ -93,7 +93,12 @@ var tween_features = new TimelineMax()
 .fromTo(E("#feature-faq .feature-faq-right01"), 1, {paddingLeft:0, paddingRight:0, width:0}, {paddingLeft:5, paddingRight:5, width:"100%"}, "-=2.5")
 .fromTo(E("#feature-faq .feature-faq-right-response01"), 1, {autoAlpha:0,left:"200%"}, {autoAlpha:1,left:0}, "-=2")
 .fromTo(E("#feature-faq .feature-faq-right02"), 1, {paddingLeft:0, paddingRight:0, width:0}, {paddingLeft:5, paddingRight:5, width:"100%"}, "-=1.5")
-.fromTo(E("#feature-faq .feature-faq-right-response02"), 1, {autoAlpha:0,left:"200%"}, {autoAlpha:1,left:0}, "-=1");
+.fromTo(E("#feature-faq .feature-faq-right-response02"), 1, {autoAlpha:0,left:"200%"}, {autoAlpha:1,left:0}, "-=1")
+.to(E("#feature-food"), 1, {top:0, delay:1})
+.fromTo(E("#feature-food-title"), 1, {autoAlpha:0,left:"200%"},{autoAlpha:1,left:0})
+.fromTo(E("#feature-food-search"), 1, {paddingLeft:0,paddingRight:0,width:0}, {paddingLeft:5,paddingRight:5,width:"100%"})
+.fromTo(E("#feature-food-response"), 1, {autoAlpha:0,left:"200%"},{autoAlpha:1,left:0})
+.fromTo(E("#feature-food img"), 1, {opacity:0.2}, {opacity: 1}, "-=3");
 
 // Section Features Pin Info Box
 new ScrollMagic.Scene({
@@ -266,14 +271,14 @@ new ScrollMagic.Scene({
 .addIndicators()
 .addTo(controller);
 
-// Section 03 Parallax
+// Section Design Parallax
 new ScrollMagic.Scene({
-    triggerElement: "#section03",
+    triggerElement: "#section-design",
     triggerHook: "onEnter",
-    duration: "200%"
+    duration: E("#section-design .parallax-box").offsetHeight
 })
-.setTween("#section03 > div.parallax-box", {y: "80%", ease: Linear.easeNone})
-.addIndicators()
+.setTween("#section-design > div.parallax-box", {y: "20%", ease: Linear.easeNone})
+.addIndicators({name:"Start Parallax"})
 .addTo(controller);
 
 // Section 04 Parallax

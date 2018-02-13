@@ -219,6 +219,7 @@ em {
     height: 100%;
     width: 100%;
     top: 0;
+    left: 0;
     background: #f2f9ff;
 }
 .feature .feature-left-side {
@@ -325,4 +326,8 @@ em {
 }
 .feature-lecture-info .feature-lecture-info-content {
     opacity: 0.3;
+}
+/* Section Design */
+#section-design {
+    height: 3000px;
 }
