@@ -20,6 +20,8 @@ def get_skill_match(skill_name, skill_text, text, chat):
     g_text = text
     g_chat = chat
 
+    if skill_name == "GetBotInformation":
+        return get_bot_information()
     if skill_name == "GetCertificateOfStudy":
         return get_certificate_of_study()
     elif skill_name == "GetExamRegistration":
@@ -54,6 +56,23 @@ def get_skill_match(skill_name, skill_text, text, chat):
         print("Error: No pattern " + skill_name + " found.")
 
     return False
+
+def get_bot_information():
+    global g_chat
+    answer = "Hallo, ich bin der ganz persönliche Chatbot für Erstsemester des Komedia-Studiengangs. \n" \
+             "Ich habe Informationen über die folgenden Bereiche: \n \n" \
+             "- Vorlesungen und Zeiten \n" \
+             "- Räume und Veranstaltungen\n" \
+             "- Mensa-Speisepläne \n" \
+             "- Semesterbeiträge \n" \
+             "- Prüfungsanmeldungen \n" \
+             "- Studienbescheinigungen \n" \
+             "\n" \
+             "...und noch vieles mehr!"
+
+    send_message(answer, g_chat)
+    return True
+
 
 def get_certificate_of_study():
     global g_chat

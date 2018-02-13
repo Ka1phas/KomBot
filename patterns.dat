@@ -16,7 +16,7 @@ GetLectures Was für _ Vorlesungen _
 GetLectures Zeige  _ Veranstaltungen _
 GetLectures Zeige _ Vorlesungen _
 
-AddLectureToShedule Füge _ zu meinem Studenplan hinzu
+AddLectureToShedule Füge _ zu meinem Stundenplan hinzu
 AddLectureToShedule _ Stundenplan _ zu
 AddLectureToShedule _ trage _ in _ ein
 
@@ -51,6 +51,7 @@ GetSemesterFee _ Semestergebühren _
 
 GetExamRegistration _ Prüfungsanmeldung _
 GetExamRegistration _ Prüfungen anmelden _
+GetExamRegistration _ Klausuren anmelden _
 GetExamRegistration _ Prüfung anmelden _
 GetExamRegistration _ Anmeldephase _ Prüfungen _
 GetExamRegistration _ Prüfungsanmeldephase _
@@ -63,3 +64,5 @@ GetVPN _ Openconnect _
 GetCertificateOfStudy _ Studienbescheinigung _
 
 GeneralWhere Wo _
+
+GetBotInformation Was kannst du
