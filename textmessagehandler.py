@@ -95,6 +95,8 @@ def get_pattern_match(text, chat):
                     break
 
     if not gave_answer:
+        with open("unknown_requests.txt", "a") as myfile:
+            myfile.write(cleaned_text)
         send_message("Das habe ich leider nicht verstanden.", chat)
 
 
