@@ -1,5 +1,6 @@
 from kombot import send_message, send_message_html, send_photo, send_location, build_keyboard, build_lecture_keyboard, build_keyboard_remove, db, GERMAN_WEEKDAYS, send_document
 from canteenmenuhelper import get_menu_as_string
+import synonyms as syn
 import json
 import os
 
@@ -252,10 +253,9 @@ def add_lecture_to_shedule():
     elif matched_lecture:
         lecture_id = db.get_lecture_id(matched_lecture["title"])
         db.add_lecture(lecture_id, g_chat)
-        message = "Ich habe die Vorlesung {} zu deinem Stundenplan hinzugefügt. Sie ist am {} von {} Uhr bis {} Uhr in {}.".format(matched_lecture["title"],
-                                                                                                                                 GERMAN_WEEKDAYS[matched_lecture["weekday"]],
-                                                                                                                                 matched_lecture["start"], matched_lecture["end"],
-                                                                                                                                 matched_lecture["room_name"])
+        message = "Ich habe die Vorlesung {} zu deinem Stundenplan hinzugefügt. Sie ist am {} von {} Uhr bis {} Uhr in {}.".format(matched_lecture["title"],                                                                                                                               GERMAN_WEEKDAYS[matched_lecture["weekday"]],
+                                                matched_lecture["start"], matched_lecture["end"],
+                                                matched_lecture["room_name"])
     else:
         message = ("Ich habe diese Vorlesung leider nicht gefunden." + EMOJI_SAD + "\nHier sind alle Vorlesungen aufgeführt:"
                    "https://www.uni-due.de/imperia/md/content/vv/vvz_ws_2017-18_due_1011_inkowiss.pdf")
@@ -281,12 +281,25 @@ def get_my_shedule():
 
 def match_lecture_name(input_text, lectures):
     titles = []
+    synonyms_title = []
     for lecture in lectures:
-        titles.append(lecture["title"].lower().replace(" ", ""))
+        titles.append(lecture["title"])
     stripped_text = input_text.lower().replace(" ", "")
     for title in titles:
-        if(title in stripped_text):
+        try:
+            synonyms_title = syn.synonyms[title]
+        except KeyError:
+            print("Error")#nothing
+        print("Test")
+        stripped_title = title.lower().replace(" ", "")
+        if(stripped_title in stripped_text):
             return lectures[titles.index(title)]
+        else:
+            for synonym in synonyms_title:
+                stripped_synonym = synonym.lower().replace(" ", "")
+                print(stripped_synonym)
+                if(stripped_synonym in stripped_text):
+                    return lectures[titles.index(title)]
     return None
 
 def match_room_name(input_text, rooms):
