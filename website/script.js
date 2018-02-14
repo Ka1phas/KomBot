@@ -378,11 +378,11 @@ new ScrollMagic.Scene({
 .addTo(controller);
 
 var tween_team = new TimelineMax()
-.fromTo(E("#member01"), 1, {padding:0,opacity:0,width:0,height:0}, {padding:15,opacity:1,width:250,height:250})
-.fromTo(E("#member02"), 1, {padding:0,opacity:0,width:0,height:0}, {padding:15,opacity:1,width:250,height:250})
-.fromTo(E("#member03"), 1, {padding:0,opacity:0,width:0,height:0}, {padding:15,opacity:1,width:250,height:250})
-.fromTo(E("#member04"), 1, {padding:0,opacity:0,width:0,height:0}, {padding:15,opacity:1,width:250,height:250})
-.fromTo(E("#member05"), 1, {padding:0,opacity:0,width:0,height:0}, {padding:15,opacity:1,width:250,height:250})
+.fromTo(E("#member01"), 1, {padding:0,opacity:0,width:0,height:0}, {padding:15,opacity:1,width:250,height:270})
+.fromTo(E("#member02"), 1, {padding:0,opacity:0,width:0,height:0}, {padding:15,opacity:1,width:250,height:270})
+.fromTo(E("#member03"), 1, {padding:0,opacity:0,width:0,height:0}, {padding:15,opacity:1,width:250,height:270})
+.fromTo(E("#member04"), 1, {padding:0,opacity:0,width:0,height:0}, {padding:15,opacity:1,width:250,height:270})
+.fromTo(E("#member05"), 1, {padding:0,opacity:0,width:0,height:0}, {padding:15,opacity:1,width:250,height:270})
 
 new ScrollMagic.Scene({
     triggerElement: "#section-team",
