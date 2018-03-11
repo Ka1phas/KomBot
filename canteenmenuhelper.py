@@ -19,8 +19,7 @@ def get_menu_as_string():
 
     dayid = "plan-" + time
     meals = soup.find(id=dayid)
-
-	if meals is None:
+    if meals is None:
 		return "Leider ist für heute kein Speiseplan verfügbar"
 
     menu_as_string = "In der Hauptmensa in Duisburg gibt es heute: \n \n"

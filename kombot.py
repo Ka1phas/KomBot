@@ -112,9 +112,8 @@ def build_keyboard_remove():
     reply_markup = {"remove_keyboard": True, "selective": True}
     return json.dumps(reply_markup)
 
-
 def main():
-	print("Started Server")
+    print("Started Server")
     db.setup_timetable()
     last_update_id = None
     while True:
