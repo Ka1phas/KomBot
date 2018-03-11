@@ -114,6 +114,7 @@ def build_keyboard_remove():
 
 
 def main():
+	print("Started Server")
     db.setup_timetable()
     last_update_id = None
     while True:
