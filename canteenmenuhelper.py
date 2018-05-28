@@ -7,7 +7,7 @@ import datetime
 def get_menu_as_string():
     http = urllib3.PoolManager()
 
-    url = 'http://studentenwerk.essen-duisburg.de/gastronomie/mensen/hauptmensa-duisburg/'
+    url = 'http://studentenwerk.essen-duisburg.de/gastronomie/mensen/mensa-campus-duisburg/'
     response = http.request('GET', url)
 
     soup = BeautifulSoup(response.data.decode('utf-8'),"html5lib")
